@@ -1,0 +1,18 @@
+{
+  "en": {
+    "lesli": {
+      "shared": {
+        "button_add_new": "Add new",
+        "button_reload": "Reload"
+      }
+    }
+  },
+  "es": {
+    "lesli": {
+      "shared": {
+        "button_add_new": "Agregar nuevo",
+        "button_reload": "Recargar"
+      }
+    }
+  }
+}
