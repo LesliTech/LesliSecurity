@@ -1,3 +1,4 @@
+<%
 =begin
 
 Lesli
@@ -17,7 +18,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS Development Framework.
+Lesli · Ruby on Rails SaaS development platform.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -29,30 +30,5 @@ Building a better future, one line of code at a time.
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
 =end
-
-LesliGuard::Engine.routes.draw do
-    root to: "dashboards#show"
-
-    resource :dashboard, only: [:show]
-
-    resources :users, only: [:index, :show, :new]
-
-    resources :roles do
-        collection do
-            get :options
-        end 
-        scope module: :role do
-            resources :privileges
-            resources :descriptors
-            resources :activities
-        end
-    end
-
-    resources :descriptors, only: [:index, :new, :create] do
-        scope module: :descriptor do
-            resources :privileges 
-            resources :activities
-        end
-    end
-
-end
+%>
+<router-view></router-view>
