@@ -117,7 +117,7 @@ module LesliGuard
 
         # Use callbacks to share common setup or constraints between actions.
         def set_descriptor
-            @descriptor = DescriptorServices.new(current_user, @query).find(params[:id])
+            @descriptor = DescriptorService.new(current_user, @query).find(params[:id])
         end
 
         # Only allow a list of trusted parameters through.

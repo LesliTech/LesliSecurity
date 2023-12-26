@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS development platform.
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -93,12 +93,14 @@ module LesliGuard
             { 
                 :id => resource.id,
                 :name => resource.name,
-                :category => resource.category,
-                :privileges => resource.privileges.joins(system_controller_action: :system_controller).select(
-                    "descriptor_privileges.id",
-                    "system_controllers.name as controlle_name",
-                    "system_controller_actions.name as action_name",
-                    "descriptor_privileges.created_at"
+                :category => resource.method,
+                :privileges => resource.privileges
+                .joins(system_controller_action: :system_controller)
+                .select(
+                    "lesli_descriptor_privileges.id",
+                    "lesli_system_controllers.name as controlle_name",
+                    "lesli_system_controller_actions.name as action_name",
+                    "lesli_descriptor_privileges.created_at"
                 )
             }
         end

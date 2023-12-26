@@ -18,18 +18,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Your Smart Business Assistant. 
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
-@website  https://lesli.tech
+@website  https://www.lesli.tech
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 */
 
 
@@ -39,8 +38,8 @@ import { inject, onMounted, ref } from "vue"
 
 
 // · import lesli stores
-import { useDescriptor } from "LesliApp/administration/stores/descriptor"
-import { useSystemController } from "LesliApp/administration/stores/systemController"
+import { useDescriptor } from "LesliGuard/stores/descriptor"
+import { useSystemController } from "Lesli/shared/stores/systemController"
 
 
 // · import vue router composable
@@ -64,7 +63,6 @@ const translations = {
         shared: I18n.t("core.shared"),
         descriptors: I18n.t('core.role_descriptors')
     }
-
 }
 
 
@@ -105,8 +103,7 @@ const columns = [{
 
 //
 onMounted(() => {
-    storeDescriptor.$reset()
-    storeDescriptor.fetchDescriptor(route.params.id)
+    storeDescriptor.getDescriptor(route.params.id)
 })
 
 
@@ -125,7 +122,7 @@ function addPrivilege(action) {
 
 </script>
 <template>
-    <application-component>
+    <lesli-application-container>
         <lesli-header :title="'Descriptor: '+storeDescriptor.descriptor.name">
         </lesli-header>
 
@@ -236,5 +233,5 @@ function addPrivilege(action) {
                 </lesli-toggle>
             </template>
         </lesli-table>
-    </application-component>
+    </lesli-application-container>
 </template>

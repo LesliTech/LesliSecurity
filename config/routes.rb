@@ -72,10 +72,10 @@ LesliGuard::Engine.routes.draw do
     end
 
     # Descriptor management
-    resources :descriptors, only: [:index, :new, :create] do
+    resources :descriptors, only: [:index, :show, :new, :create] do
         scope module: :descriptor do
-            resources :privileges 
-            resources :activities
+            resources :privileges, only: [:index] 
+            #resources :activities
         end
     end
 end

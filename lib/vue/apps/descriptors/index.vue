@@ -1,6 +1,5 @@
 <script setup>
 /*
-
 Lesli
 
 Copyright (c) 2023, Lesli Technologies, S. A.
@@ -18,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS development platform.
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -94,7 +93,7 @@ onMounted(() => {
                 @click="storeDescriptors.getDescriptors()">
                 Reload
             </lesli-button>
-            <lesli-link main icon="add" :to="url.vault('descriptors/new')">
+            <lesli-link main icon="add" :to="url.guard('descriptors/new')">
                 Add descriptor
             </lesli-link>
         </lesli-header>
@@ -102,7 +101,7 @@ onMounted(() => {
         <lesli-toolbar @search="storeDescriptors.search"></lesli-toolbar>
 
         <lesli-table
-            :link="(descriptor) => url.vault('descriptors/:id', descriptor.id)"
+            :link="(descriptor) => url.guard('descriptors/:id', descriptor.id)"
             :columns="columns"
             :loading="storeDescriptors.index.loading"
             :records="storeDescriptors.index.records"
