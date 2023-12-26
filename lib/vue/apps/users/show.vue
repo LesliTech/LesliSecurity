@@ -49,13 +49,14 @@ const route = useRoute()
 // · import profile components
 import informationCard from "LesliGuard/apps/users/components/information-card.vue"
 import informationForm from "LesliGuard/apps/users/components/information-form.vue"
+import managementSession from "LesliGuard/apps/users/components/management-sessions.vue"
+import managementSettings from "LesliGuard/apps/users/components/management-settings.vue"
+import managementSecurity from "LesliGuard/apps/users/components/management-security.vue"
 
 /*
 import informationForm from "CloudAdmin/apps/users/components/information-form.vue"
 import managementRoles from "CloudAdmin/apps/users/components/management-roles.vue"
-import managementSession from "CloudAdmin/apps/users/components/management-sessions.vue"
-import managementSecurity from "CloudAdmin/apps/users/components/management-security.vue"
-import managementSettings from "CloudAdmin/apps/users/components/management-settings.vue"
+
 */
 
 
@@ -87,8 +88,20 @@ onMounted(() => {
     <lesli-application-container>
         <information-card></information-card>
         <lesli-tabs v-model="tab">
-            <lesli-tab-item icon="info_outline" title="Information">
+            <lesli-tab-item icon="info_outline" :title="translations.guard.users.tab_information">
                 <information-form></information-form>
+            </lesli-tab-item>
+
+            <lesli-tab-item icon="lock_outline" :title="translations.guard.users.tab_security">
+                <management-security></management-security>
+            </lesli-tab-item>
+
+            <lesli-tab-item icon="devices" :title="translations.guard.users.tab_sessions">
+                <management-session></management-session>
+            </lesli-tab-item>
+
+            <lesli-tab-item icon="settings" :title="translations.guard.users.tab_settings">
+                <management-settings></management-settings>
             </lesli-tab-item>
         </lesli-tabs>
     </lesli-application-container>

@@ -93,11 +93,8 @@ module LesliGuard
                 first_name: user[:first_name],
                 last_name: user[:last_name],
                 telephone: user[:telephone],
-                
-                #locale: user.settings.select(:value).find_by(:name => "locale"),
-
+                locale: user.locale, #settings.select(:value).find_by(:name => "locale"),
                 roles: user.roles.map { |r| { id: r[:id], name: r[:name], permission_level: r[:object_level_permission]} },
-
 
                 #mfa_enabled: user.mfa_settings[:enabled],
                 #mfa_method:  user.mfa_settings[:method],
@@ -259,6 +256,24 @@ module LesliGuard
         def find id
             #super(current_user.account.users.joins(:detail).find_by(id: id))
             super(current_user.account.users.find_by(id: id))
+        end
+
+        def sessions(current_session_id)
+            current_user.sessions
+            .joins(:user)
+            .where("expiration_at > ? or expiration_at is ?", Time.now.utc, nil)
+            .select(
+                :id,
+                :session_source,
+                Date2.new.date_time.db_column("created_at", "lesli_user_sessions"),
+                Date2.new.date_time.db_column("last_used_at"),
+                Date2.new.date_time.db_column("expiration_at"),
+                "CONCAT_WS(' ', agent_platform, agent_os, '/', agent_browser, agent_version) as device",
+                "case when #{current_session_id} = lesli_user_sessions.id then true else false end as current_session"
+            )
+            .page(query[:pagination][:page])
+            .per(query[:pagination][:perPage])
+            .order(updated_at: :desc)
         end
     end
 end

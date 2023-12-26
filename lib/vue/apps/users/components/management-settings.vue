@@ -18,18 +18,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Your Smart Business Assistant. 
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
-@website  https://lesli.tech
+@website  https://www.lesli.tech
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 */
 
 
@@ -38,7 +37,7 @@ import { ref, reactive, onMounted, watch, computed } from "vue"
 
 
 // · import lesli stores
-import { useUser } from "LesliApp/administration/stores/user" 
+import { useUser } from "LesliGuard/stores/user" 
 
 
 // · implement stores
@@ -48,17 +47,17 @@ const storeUser = useUser()
 // · translations
 const translations = {
     users: I18n.t("core.users"),
-    shared: I18n.t("core.shared")
+    shared: i18n.t("lesli.shared")
 }
 
 
 // · initializing
 onMounted(() => {
-    storeUser.getOptions()
+    //storeUser.getOptions()
 })
 </script>
 <template>
-    <lesli-form @submit="storeUser.postLanguage">
+    <lesli-form flat @submit="storeUser.postLanguage">
         <div class="field is-horizontal">
             <div class="field-label">
                 <label class="label">Select preferred language </label>
@@ -84,7 +83,7 @@ onMounted(() => {
                 <div class="field">
                     <div class="control">
                         <lesli-button icon="save">
-                            {{ translations.shared.view_btn_save }}
+                            {{ translations.shared.button_save }}
                         </lesli-button>                    
                     </div>
                 </div>

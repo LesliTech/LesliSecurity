@@ -48,7 +48,16 @@ LesliGuard::Engine.routes.draw do
     end
 
     # User management
-    resources :users, only: [:index, :show, :new, :update]
+    resources :users, only: [:index, :show, :new, :update] do 
+
+        # extensions to the user methods
+        scope module: :user do
+
+            # sessions management
+            resources :sessions, only: [:index, :destroy]
+
+        end
+    end
 
     # Work with roles and privileges
     resources :roles do

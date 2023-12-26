@@ -14,10 +14,14 @@
       column_telephone: Teléfono
       column_title: Titulo
       column_address: Dirección
+      tab_information: Información
       column_active: Activo
       column_email: Email
       column_alias: Alias
       column_salutation: Saludo
+      tab_settings: Configuración
+      tab_sessions: Sesiones
+      tab_security: Seguridad
   lesli:
     shared:
       view_discussions: Discusiones

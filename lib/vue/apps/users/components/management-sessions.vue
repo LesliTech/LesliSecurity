@@ -1,6 +1,5 @@
 <script setup>
 /*
-
 Lesli
 
 Copyright (c) 2023, Lesli Technologies, S. A.
@@ -18,20 +17,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Your Smart Business Assistant. 
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
-@website  https://lesli.tech
+@website  https://www.lesli.tech
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 */
-
 
 
 // · import vue tools
@@ -43,7 +40,7 @@ import { useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useUser } from "LesliApp/administration/stores/user"
+import { useUser } from "LesliGuard/stores/user"
 
 
 // · implement stores
@@ -57,7 +54,7 @@ const route = useRoute()
 // · 
 const translations = {
     users: I18n.t("core.users"),
-    shared: I18n.t("core.shared")
+    shared: i18n.t("lesli.shared")
 }
 
 
@@ -66,17 +63,17 @@ const columns = [{
     field: 'id',
     label: 'ID'
 }, {
-    field: 'user_agent',
+    field: 'device',
     label: 'Device'
 }, {
     field: 'session_source',
     label: 'Source'
 }, {
-    field: 'created_at_date',
+    field: 'created_at_string',
     label: 'Created at'
 }, {
-    field: 'last_used_at_string',
-    label: 'Last used at'
+    field: 'expiration_at_string',
+    label: 'Expiration at'
 }]
 
 
@@ -87,7 +84,6 @@ onMounted(() => {
 
 </script>
 <template>
-    <lesli-card>
         <lesli-toolbar>
             <lesli-button icon="refresh">
                 Reload
@@ -97,10 +93,9 @@ onMounted(() => {
             :columns="columns"
             :records="storeUser.sessions.records">
             <template #buttons="{ record, value }">
-                <lesli-button danger icon="delete" @click="storeUser.deleteSession(record.id)">
-                    {{ translations.users.view_btn_logout }}
+                <lesli-button small danger icon="delete" @click="storeUser.deleteSession(record.id)">
+                    {{ translations.shared.button_delete }}
                 </lesli-button>
             </template>
         </lesli-table>
-    </lesli-card>
 </template>
