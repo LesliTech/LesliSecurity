@@ -30,43 +30,13 @@ Building a better future, one line of code at a time.
 // · 
 =end
 
-LesliGuard::Engine.routes.draw do
+module LesliGuard
+    class Dashboard::Component < ApplicationRecord
 
-    # Dashboard alias
-    root to: "dashboards#show"
+        belongs_to :dashboard, inverse_of: :components
 
-    # Dashboard management
-    resource :dashboard, only: [:show]
-    resources :dashboards do
-        collection do
-            post "list" => :index
-            get :options
-        end
-        scope module: :dashboard do
-            resources :components
-        end
-    end
-
-    # User management
-    resources :users, only: [:index, :show, :new, :update]
-
-    # Work with roles and privileges
-    resources :roles do
-        collection do
-            get :options
-        end 
-        scope module: :role do
-            resources :privileges
-            resources :descriptors
-            resources :activities
-        end
-    end
-
-    # Descriptor management
-    resources :descriptors, only: [:index, :new, :create] do
-        scope module: :descriptor do
-            resources :privileges 
-            resources :activities
+        def self.component_ids
+            ["guard-users"]
         end
     end
 end

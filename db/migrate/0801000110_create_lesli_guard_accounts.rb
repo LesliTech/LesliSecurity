@@ -30,43 +30,13 @@ Building a better future, one line of code at a time.
 // · 
 =end
 
-LesliGuard::Engine.routes.draw do
-
-    # Dashboard alias
-    root to: "dashboards#show"
-
-    # Dashboard management
-    resource :dashboard, only: [:show]
-    resources :dashboards do
-        collection do
-            post "list" => :index
-            get :options
+class CreateLesliGuardAccounts < ActiveRecord::Migration[6.0]
+    def change
+        create_table :lesli_guard_accounts do |t|
+            t.integer   :status
+            t.datetime  :deleted_at, index: true
+            t.timestamps 
         end
-        scope module: :dashboard do
-            resources :components
-        end
-    end
-
-    # User management
-    resources :users, only: [:index, :show, :new, :update]
-
-    # Work with roles and privileges
-    resources :roles do
-        collection do
-            get :options
-        end 
-        scope module: :role do
-            resources :privileges
-            resources :descriptors
-            resources :activities
-        end
-    end
-
-    # Descriptor management
-    resources :descriptors, only: [:index, :new, :create] do
-        scope module: :descriptor do
-            resources :privileges 
-            resources :activities
-        end
+        add_reference(:lesli_guard_accounts, :account, foreign_key: { to_table: :lesli_accounts })
     end
 end

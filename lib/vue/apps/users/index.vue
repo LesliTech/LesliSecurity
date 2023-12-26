@@ -37,7 +37,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useUsers } from "LesliAdmin/stores/users"
+import { useUsers } from "LesliGuard/stores/users"
 
 
 // · initialize/inject plugins
@@ -55,14 +55,15 @@ const translations = {
     lesli: {
         shared: i18n.t("lesli.shared")
     },
+    guard: {
+        users: i18n.t("lesli_guard.users")
+    },
     core: {
-        users: i18n.t("lesli_admin.users"),
+        users: {},
         roles: {},
         shared: {}
     },
-    admin: {
-        users: i18n.t("lesli_admin.users")
-    }
+    
 }
 
 
@@ -73,28 +74,28 @@ const columns = [{
     sort: true
 }, {
     field: "name",
-    label: translations.admin.users.table_header_name,
+    label: translations.guard.users.table_header_name,
     sort: true
 }, {
     field: "email",
-    label: translations.core.users.view_table_header_email,
+    label: translations.guard.users.table_header_email,
     sort: true
 }, {
     field: "rolenames",
-    label: translations.core.users.view_table_header_role,
+    label: translations.guard.users.table_header_roles,
     sort: true
 }, {
     field: "active",
-    label: translations.core.users.view_table_header_status,
+    label: translations.guard.users.table_header_status,
     sort: true,
     custom: true
 }, {
     field: "current_sign_in_at_string",
-    label: translations.core.users.view_table_header_last_sign_in,
+    label: translations.guard.users.table_header_last_sign_in,
     sort: true
 }, {
     field: "last_action_performed_at_string",
-    label: translations.core.users.view_text_last_activity_at,
+    label: translations.guard.users.table_header_last_activity,
     sort: true
 }]
 
@@ -131,7 +132,7 @@ function showUser(user) {
 </script>
 <template>
     <lesli-application-container>
-        <lesli-header :title="translations.admin.users.view_users + ' (' +storeUsers.index.pagination.total+ ')' ">
+        <lesli-header :title="translations.guard.users.view_title + ' (' + storeUsers.index.pagination.total + ')' ">
             <lesli-button icon="add" :to="url.root(props.appMountPath+`/new`)">
                 {{ translations.lesli.shared.button_add_new }}
             </lesli-button>
@@ -174,16 +175,16 @@ function showUser(user) {
             :columns="columns"
             :records="storeUsers.index.records"
             :pagination="storeUsers.index.pagination"
-            :link="(user) => url.admin('users/:id', user.id)"
+            :link="(user) => url.guard('users/:id', user.id)"
             @paginate="storeUsers.paginateIndex"
             @sort="storeUsers.sortIndex">
 
             <template #active="{ value }">
                 <span class="tag is-success" v-if="value">
-                    {{ translations.core.shared.view_text_active }}
+                    {{ translations.lesli.shared.view_status_active }}
                 </span>
                 <span class="tag is-warning" v-if="!value">
-                    {{ translations.core.shared.view_text_inactive }}
+                    {{ translations.core.shared.view_status_inactive }}
                 </span>
             </template>
 

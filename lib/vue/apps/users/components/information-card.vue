@@ -32,7 +32,7 @@ Building a better future, one line of code at a time.
 
 
 // · import lesli stores
-import { useUser } from "LesliAdmin/stores/user"
+import { useUser } from "LesliGuard/stores/user"
 
 
 // · implement stores
@@ -41,9 +41,8 @@ const storeUser = useUser()
 
 // · translations
 const translations = {
-    core: {
-        users: I18n.t("core.users"),
-        shared: I18n.t("core.shared"),
+    guard: {
+        users: i18n.t("lesli_guard.users")
     }
 }
 
@@ -61,19 +60,11 @@ const translations = {
 
             <div class="media-content">
                 <div class="content mb-0">
-                    <p>
-                        <!-- 
-                        <strong>
-                            object_utils.translateEnum(translations.core.shared, 'column_enum_salutation', user.detail_attributes.salutation )
-                            {{ storeUser.user.detail_attributes.salutation }}
-                        </strong>
-                        -->
-                        <h5 class="title is-5 mb-0">
-                            {{ storeUser.user.first_name }}
-                            {{ storeUser.user.last_name }}
-                        </h5>
-                        <p>{{ storeUser.user.detail_attributes.title }}</p>
-                    </p>
+                    <h5 class="title is-5 mb-0">
+                        {{ storeUser.user.first_name }}
+                        {{ storeUser.user.last_name }}
+                    </h5>
+                    <p>{{ storeUser.user.detail_attributes.title }}</p>
                 </div>
 
                 <div class="level is-mobile">
@@ -100,7 +91,7 @@ const translations = {
                         </a>
 
                         <!-- Show the max role -->
-                        <p class="level-item">
+                        <p class="level-item" v-if="storeUser.role_names">
                             <span class="icon is-small mr-2">
                                 <span class="material-icons">
                                     security

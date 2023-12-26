@@ -37,7 +37,7 @@ import { useRouter, useRoute } from 'vue-router'
 
 
 // · import lesli stores
-import { useUser } from "LesliAdmin/stores/user"
+import { useUser } from "LesliGuard/stores/user"
 
 
 // · implement stores
@@ -47,11 +47,11 @@ const route = useRoute()
 
 
 // · import profile components
-import informationCard from "LesliAdmin/apps/users/components/information-card.vue"
-import informationForm from "LesliAdmin/apps/users/components/information-form.vue"
+import informationCard from "LesliGuard/apps/users/components/information-card.vue"
+import informationForm from "LesliGuard/apps/users/components/information-form.vue"
+
 /*
 import informationForm from "CloudAdmin/apps/users/components/information-form.vue"
-
 import managementRoles from "CloudAdmin/apps/users/components/management-roles.vue"
 import managementSession from "CloudAdmin/apps/users/components/management-sessions.vue"
 import managementSecurity from "CloudAdmin/apps/users/components/management-security.vue"
@@ -59,10 +59,11 @@ import managementSettings from "CloudAdmin/apps/users/components/management-sett
 */
 
 
-
-
 // · translations
 const translations = {
+    guard: {
+        users: i18n.t("lesli_guard.users")
+    },
     core: {
         roles: I18n.t("core.roles"),
         users: I18n.t("core.users"),

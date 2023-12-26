@@ -98,7 +98,8 @@ module LesliGuard
                 
                 #locale: user.settings.select(:value).find_by(:name => "locale"),
 
-                #roles: user.roles.map { |r| { id: r[:id], name: r[:name], permission_level: r[:object_level_permission]} },
+                roles: user.roles.map { |r| { id: r[:id], name: r[:name], permission_level: r[:object_level_permission]} },
+
 
                 #mfa_enabled: user.mfa_settings[:enabled],
                 #mfa_method:  user.mfa_settings[:method],
@@ -106,8 +107,8 @@ module LesliGuard
                 created_at: user[:created_at],
                 updated_at: user[:updated_at],
                 detail_attributes: {
-                    title: user.detail&[:title] || "",
-                #     address: user.detail[:address],
+                    title: user.detail[:title] || "",
+                    address: user.detail[:address],
                 #     work_city: user.detail[:work_city],
                 #     work_region: user.detail[:work_region],
                 #     work_address: user.detail[:work_address]

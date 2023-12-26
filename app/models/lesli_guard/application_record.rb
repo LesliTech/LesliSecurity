@@ -28,12 +28,10 @@ Building a better future, one line of code at a time.
 
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 =end
 
 module LesliGuard
-  class ApplicationRecord < ActiveRecord::Base
-#   class ApplicationRecord < ApplicationLesliRecord
-    # self.abstract_class = true
-  end
+    class ApplicationRecord < ActiveRecord::Base
+        self.abstract_class = true
+    end
 end

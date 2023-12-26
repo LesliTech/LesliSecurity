@@ -36,7 +36,7 @@ import { onMounted, inject } from "vue"
 
 
 // · import lesli stores
-import { useUser } from "LesliAdmin/stores/user"
+import { useUser } from "LesliGuard/stores/user"
 
 
 // · import vue router composable
@@ -55,33 +55,24 @@ const url = inject("url")
 
 // · 
 const translations = {
+    guard: {
+        users: i18n.t("lesli_guard.users")
+    },
+    lesli: {
+        shared: i18n.t("lesli.shared")
+    },
     users: I18n.t("core.users"),
     shared: I18n.t("core.shared")
 }
 
 </script>
 <template>
-    <form class="information" @submit.prevent="storeUser.putUser()">
-        <div class="field is-horizontal">
-            <div class="field-label">
-                <label class="label"> {{ translations.shared.view_text_salutation}} </label>
-            </div>
-            <div class="field-body">
-                <div class="field is-narrow">
-                    <div class="control">
-                        <label :for="salutation.value" class="radio" v-for="salutation in storeUser.options.salutations" :key="salutation">
-                            <input name="user_salutation" type="radio" :id="salutation.value" :value="salutation.value" v-model="storeUser.user.detail_attributes.salutation" />
-                            {{salutation.text}}
-                        </label>  
-                    </div>
-                </div>
-            </div>
-        </div>
+    <lesli-form flat @submit="storeUser.putUser()">
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label"> 
-                    {{translations.shared.view_text_email}}
+                    {{ translations.guard.users.column_email }}
                     <span class="is-danger">*</span>
                 </label>
             </div>
@@ -97,7 +88,7 @@ const translations = {
         <div class="field is-horizontal">
             <div class="field-label is-normal">
                 <label class="label"> 
-                    {{ translations.shared.view_text_first_name }}
+                    {{ translations.guard.users.column_first_name }}
                 </label>
             </div>
             <div class="field-body">
@@ -111,7 +102,9 @@ const translations = {
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label class="label"> {{ translations.shared.view_text_last_name }} </label>
+                <label class="label">
+                    {{ translations.guard.users.column_last_name }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -124,7 +117,9 @@ const translations = {
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label class="label"> {{ translations.shared.view_text_alias }} </label>
+                <label class="label">
+                    {{ translations.guard.users.column_alias }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -137,7 +132,9 @@ const translations = {
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label class="label"> {{ translations.shared.view_text_telephone }} </label>
+                <label class="label">
+                    {{ translations.guard.users.column_telephone }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -150,7 +147,9 @@ const translations = {
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">
-                <label class="label"> {{ translations.users.view_text_title }} </label>
+                <label class="label">
+                    {{ translations.guard.users.column_title }}
+                </label>
             </div>
             <div class="field-body">
                 <div class="field">
@@ -167,11 +166,11 @@ const translations = {
                 <div class="field">
                     <div class="control">
                         <lesli-button icon="save">
-                            {{ translations.shared.view_btn_save }}
+                            {{ translations.lesli.shared.button_save }}
                         </lesli-button>                 
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </lesli-form>
 </template>

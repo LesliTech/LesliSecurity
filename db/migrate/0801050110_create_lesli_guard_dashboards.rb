@@ -30,43 +30,22 @@ Building a better future, one line of code at a time.
 // · 
 =end
 
-LesliGuard::Engine.routes.draw do
-
-    # Dashboard alias
-    root to: "dashboards#show"
-
-    # Dashboard management
-    resource :dashboard, only: [:show]
-    resources :dashboards do
-        collection do
-            post "list" => :index
-            get :options
+class CreateLesliGuardDashboards < ActiveRecord::Migration[6.1]
+    def change
+        gem_path = Lesli::System.engine("Lesli", "dir")
+        table_base_structure = JSON.parse(File.read(File.join(gem_path, "db", "structure", "00000501_dashboards.json")))
+        create_table :lesli_guard_dashboards do |t|
+            table_base_structure.each do |column|
+                t.send(
+                    column["type"].parameterize.underscore.to_sym,
+                    column["name"].parameterize.underscore.to_sym
+                )
+            end
+            t.timestamps
         end
-        scope module: :dashboard do
-            resources :components
-        end
-    end
-
-    # User management
-    resources :users, only: [:index, :show, :new, :update]
-
-    # Work with roles and privileges
-    resources :roles do
-        collection do
-            get :options
-        end 
-        scope module: :role do
-            resources :privileges
-            resources :descriptors
-            resources :activities
-        end
-    end
-
-    # Descriptor management
-    resources :descriptors, only: [:index, :new, :create] do
-        scope module: :descriptor do
-            resources :privileges 
-            resources :activities
-        end
+       
+        add_reference(:lesli_guard_dashboards, :account, foreign_key: { to_table: :lesli_guard_accounts })
+        add_reference(:lesli_guard_dashboards, :user, foreign_key: { to_table: :lesli_users })
+        #add_reference(:lesli_admin_dashboards, :role, foreign_key: { to_table: :roles })
     end
 end

@@ -3,7 +3,36 @@
     "lesli": {
       "shared": {
         "button_add_new": "Add new",
-        "button_reload": "Reload"
+        "button_delete": "Delete",
+        "button_edit": "Edit",
+        "button_list": "List",
+        "button_reload": "Reload",
+        "button_save": "Save",
+        "view_discussions": "Discussions",
+        "view_files": "Files",
+        "view_quick_actions": "Quick actions",
+        "view_status_active": "Active",
+        "view_status_inactive": "Inactive"
+      }
+    },
+    "lesli_guard": {
+      "users": {
+        "column_active": "Active",
+        "column_address": "Address",
+        "column_alias": "Alias",
+        "column_email": "Email",
+        "column_first_name": "First name",
+        "column_last_name": "Last name",
+        "column_salutation": "Salutation",
+        "column_telephone": "Telephone",
+        "column_title": "Title",
+        "table_header_email": "Email",
+        "table_header_last_activity": "Last activity",
+        "table_header_last_sign_in": "Last sign in",
+        "table_header_name": "Name",
+        "table_header_roles": "Roles",
+        "table_header_status": "Status",
+        "view_title": "Users"
       }
     }
   },
@@ -11,7 +40,36 @@
     "lesli": {
       "shared": {
         "button_add_new": "Agregar nuevo",
-        "button_reload": "Recargar"
+        "button_delete": "Eliminar",
+        "button_edit": "Editar",
+        "button_list": "Lista",
+        "button_reload": "Recargar",
+        "button_save": "Guardar",
+        "view_discussions": "Discusiones",
+        "view_files": "Archivos",
+        "view_quick_actions": "Acciones rapidas",
+        "view_status_active": "Activo",
+        "view_status_inactive": "Inactivo"
+      }
+    },
+    "lesli_guard": {
+      "users": {
+        "column_active": "Activo",
+        "column_address": "Dirección",
+        "column_alias": "Alias",
+        "column_email": "Email",
+        "column_first_name": "Nombre",
+        "column_last_name": "Apellido",
+        "column_salutation": "Saludo",
+        "column_telephone": "Teléfono",
+        "column_title": "Titulo",
+        "table_header_email": "Email",
+        "table_header_last_activity": "Ultima actividad",
+        "table_header_last_sign_in": "Ultimo login",
+        "table_header_name": "Nombre",
+        "table_header_roles": "Roles",
+        "table_header_status": "Estado",
+        "view_title": "Usuarios"
       }
     }
   }

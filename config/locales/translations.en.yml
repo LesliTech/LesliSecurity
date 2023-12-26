@@ -1,6 +1,33 @@
 ---
 :en:
+  lesli_guard:
+    users:
+      table_header_name: Name
+      table_header_last_activity: Last activity
+      table_header_last_sign_in: Last sign in
+      table_header_email: Email
+      table_header_roles: Roles
+      table_header_status: Status
+      column_first_name: First name
+      view_title: Users
+      column_last_name: Last name
+      column_telephone: Telephone
+      column_title: Title
+      column_address: Address
+      column_active: Active
+      column_email: Email
+      column_alias: Alias
+      column_salutation: Salutation
   lesli:
     shared:
+      view_discussions: Discussions
       button_add_new: Add new
       button_reload: Reload
+      view_files: Files
+      view_quick_actions: Quick actions
+      button_list: List
+      button_save: Save
+      button_delete: Delete
+      button_edit: Edit
+      view_status_active: Active
+      view_status_inactive: Inactive
