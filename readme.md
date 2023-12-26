@@ -11,6 +11,12 @@
     </p>
 <hr/>
 
+<div align="center">
+    <img 
+        style="width:100%;max-width:800px;border-radius:6px;" 
+        alt="Engine screenshot" src="./docs/screenshot.png" />
+</div>
+
 ### Quick start
 
 ```shell

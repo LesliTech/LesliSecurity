@@ -42,26 +42,25 @@ module LesliGuard
             sql_string_for_user_roles = "left join (
                 select
                     ur.user_id, string_agg(r.\"name\", ', ') rolenames
-                from user_roles ur
-                join roles r
+                from lesli_user_powers ur
+                join lesli_roles r
                     on r.id = ur.role_id
                 where ur.deleted_at is null
                 group by ur.user_id
-            ) roles on roles.user_id = users.id"
+            ) roles on roles.user_id = lesli_users.id"
 
             # sql string to joing to user_sessions and get all the active sessions of a user
             sql_string_for_user_sessions = "left join (
                 select
                     max(last_used_at) as last_action_performed_at,
                     user_id
-                from user_sessions us
+                from lesli_user_sessions us
                 where us.deleted_at is null
                 group by(us.user_id)
-            ) sessions on sessions.user_id = users.id"
+            ) sessions on sessions.user_id = lesli_users.id"
 
-            #users = current_user.account.users
-            users = Lesli::Account.first.users
-            #.joins(sql_string_for_user_roles)
+            users = current_user.account.users
+            .joins(sql_string_for_user_roles)
             #.joins(sql_string_for_user_sessions)
             users = users.page(query[:pagination][:page])
             .per(query[:pagination][:perPage])
@@ -72,9 +71,8 @@ module LesliGuard
                 "CONCAT(COALESCE(first_name, ''), ' ', COALESCE(last_name, '')) as name",
                 :email,
                 :active,
-                #:rolenames,
-                #Date2.new.date_time.db_column("current_sign_in_at"),
-                #Date2.new.date_time.db_column("last_action_performed_at")
+                :rolenames,
+                Date2.new.date_time.db_column("current_sign_in_at")
             )
 
         end

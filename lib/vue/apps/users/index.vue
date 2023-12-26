@@ -93,10 +93,6 @@ const columns = [{
     field: "current_sign_in_at_string",
     label: translations.guard.users.table_header_last_sign_in,
     sort: true
-}, {
-    field: "last_action_performed_at_string",
-    label: translations.guard.users.table_header_last_activity,
-    sort: true
 }]
 
 
