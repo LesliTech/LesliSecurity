@@ -51,16 +51,25 @@ module LesliGuard
 
             descriptor_privilege_status = false
 
-            descriptor_privilege = @descriptor.privileges.with_deleted.find_by(
-                :system_controller_action_id => descriptor_privilege_params[:action_id]
-            )
+            # search for the privilege we want to add/update
             
+            # if the privilege does not exist, we are going to create the privilege
+            descriptor_privilege = @descriptor.privileges.with_deleted.find_by(
+                :action_id => descriptor_privilege_params[:action_id]
+            )
+
+            # if the privilege exist, we are going to update the privilege
             if not descriptor_privilege
+                pp "if not descriptor_privilege"
                 descriptor_privilege = @descriptor.privileges.new(
-                    :system_controller_action_id => descriptor_privilege_params[:action_id]
+                    :action_id => descriptor_privilege_params[:action_id]
                 )
                 descriptor_privilege_status = descriptor_privilege.save
+            elsif !descriptor_privilege.deleted?
+                pp "elsif !descriptor_privilege.deleted?"
+                descriptor_privilege_status = descriptor_privilege.delete
             elsif descriptor_privilege.deleted?
+                pp "elsif descriptor_privilege.deleted?"
                 descriptor_privilege_status = descriptor_privilege.recover
             end
 
@@ -91,7 +100,7 @@ module LesliGuard
 
         # Use callbacks to share common setup or constraints between actions.
         def set_descriptor_privilege
-            @descriptor_privilege = @descriptor.privileges.find_by_id(params[:id])
+            @descriptor_privilege = @descriptor.privileges.find_by(action_id: params[:id])
             return respond_with_not_found if @descriptor_privilege.blank?
         end
 

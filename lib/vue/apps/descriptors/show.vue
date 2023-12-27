@@ -108,12 +108,8 @@ onMounted(() => {
 
 
 //
-function addPrivilege(action) {
-
-    console.log(action)
-
-    return 
-    if (action.active) {
+function addPrivilege(active, action) {
+    if (active) {
         storeDescriptor.postDescriptorPrivilege(action)
     } else {
         storeDescriptor.deleteDescriptorPrivilege(action)
@@ -204,32 +200,32 @@ function addPrivilege(action) {
             <!-- table content -->
 
             <template #list_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.actionlist" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.actionlist" @update:modelValue="addPrivilege(value)">
                 </lesli-toggle>
             </template>
 
             <template #index_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.index_active" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.index_active" @update:modelValue="addPrivilege(record)">
                 </lesli-toggle>
             </template>
 
             <template #show_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.show_active" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.show_active" @update:modelValue="addPrivilege(record.show_active, record.show_action)">
                 </lesli-toggle>
             </template>
 
             <template #create_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.create_active" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.create_active" @update:modelValue="addPrivilege(record)">
                 </lesli-toggle>
             </template>
 
             <template #update_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.update_active" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.update_active" @update:modelValue="addPrivilege(record)">
                 </lesli-toggle>
             </template>
 
             <template #destroy_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.destroy_active" @update:modelValue="addPrivilege(record)">>
+                <lesli-toggle v-if="value" v-model="record.destroy_active" @update:modelValue="addPrivilege(record)">
                 </lesli-toggle>
             </template>
         </lesli-table>
