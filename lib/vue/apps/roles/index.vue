@@ -96,7 +96,7 @@ const props = defineProps({
 
 // · 
 onMounted(() => {
-    storeRoles.fetch()
+    storeRoles.get()
 })
 
 
@@ -109,7 +109,7 @@ onMounted(() => {
                 @click="storeRoles.fetch()">
                 Reload
             </lesli-button>
-            <lesli-link main icon="add" :to="url.vault('roles/new')">
+            <lesli-link main icon="add" :to="url.guard('roles/new')">
                 Add role
             </lesli-link>
         </lesli-header>
@@ -120,6 +120,7 @@ onMounted(() => {
             :link="(role) => url.root(props.appMountPath+`/${role.id}`).s"
             :columns="columns"
             :records="storeRoles.records"
+            :loading="storeRoles.loading"
             :pagination="storeRoles.pagination"
             @paginate="storeRoles.paginateIndex"
             @sort="storeRoles.sortIndex">
