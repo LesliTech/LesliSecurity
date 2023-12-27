@@ -14,6 +14,8 @@ module LesliGuard
             # to:
             # controller_id | list | index | show | create | update | destroy |
             # so this is more easy to manage by the API clients
+            # NOTE: it is necessary to group by controller id so we ger only one
+            # row by controller
             privileges_pivot = Lesli::SystemController.joins(:actions)
             .where("lesli_system_controller_actions.deleted_at IS NULL")
             .group(:system_controller_id)
@@ -33,6 +35,7 @@ module LesliGuard
             # we have to do that due we need to check which privileges we have activated
             # later in the select statement we get the id for the list action and if the id is not null get true/false if 
             # action is assigned to the descriptor privileges
+            # we consider a privilege as active when it has an action assigned and the deleted_at column is null
             # we remove the nulls using "attributes.compact" it is important to remove all the nulls due a null action id
             # means the specific action is not implemented in any application routes, which means there is no view, controller
             # or model defined for that action
@@ -50,19 +53,19 @@ module LesliGuard
                 "case when privileges.list_action is not null then case when dp_list.action_id is null then false else true end end as list_active",
 
                 "privileges.index_action",
-                "case when privileges.index_action is not null then case when dp_index.action_id is null then false else true end end as index_active",
+                "case when privileges.index_action is not null then case when dp_index.action_id is null or dp_index.deleted_at is not null then false else true end end as index_active",
 
                 "privileges.show_action",
-                "case when privileges.show_action is not null then case when dp_show.action_id is null then false else true end end as show_active",
+                "case when privileges.show_action is not null then case when dp_show.action_id is null or dp_show.deleted_at is not null then false else true end end as show_active",
 
                 "privileges.create_action",
-                "case when privileges.create_action is not null then case when dp_create.action_id is null then false else true end end as create_active",
+                "case when privileges.create_action is not null then case when dp_create.action_id is null or dp_create.deleted_at is not null then false else true end end as create_active",
 
                 "privileges.update_action",
-                "case when privileges.update_action is not null then case when dp_update.action_id is null then false else true end end as update_active",
+                "case when privileges.update_action is not null then case when dp_update.action_id is null or dp_update.deleted_at is not null then false else true end end as update_active",
 
                 "privileges.destroy_action",
-                "case when privileges.destroy_action is not null then case when dp_destroy.action_id is null then false else true end end as destroy_active",
+                "case when privileges.destroy_action is not null then case when dp_destroy.action_id is null or dp_update.deleted_at is not null then false else true end end as destroy_active",
             ).map do |privilege|
                 privilege.attributes.compact
             end

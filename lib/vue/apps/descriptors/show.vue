@@ -200,12 +200,12 @@ function addPrivilege(active, action) {
             <!-- table content -->
 
             <template #list_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.actionlist" @update:modelValue="addPrivilege(value)">
+                <lesli-toggle v-if="value" v-model="record.list_active" @update:modelValue="addPrivilege(record.list_active, record.list_action)">
                 </lesli-toggle>
             </template>
 
             <template #index_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.index_active" @update:modelValue="addPrivilege(record)">
+                <lesli-toggle v-if="value" v-model="record.index_active" @update:modelValue="addPrivilege(record.index_active, record.index_action)">
                 </lesli-toggle>
             </template>
 
@@ -215,17 +215,17 @@ function addPrivilege(active, action) {
             </template>
 
             <template #create_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.create_active" @update:modelValue="addPrivilege(record)">
+                <lesli-toggle v-if="value" v-model="record.create_active" @update:modelValue="addPrivilege(record.create_active, record.create_action)">
                 </lesli-toggle>
             </template>
 
             <template #update_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.update_active" @update:modelValue="addPrivilege(record)">
+                <lesli-toggle v-if="value" v-model="record.update_active" @update:modelValue="addPrivilege(record.update_active, record.update_action)">
                 </lesli-toggle>
             </template>
 
             <template #destroy_action="{ record, value }">
-                <lesli-toggle v-if="value" v-model="record.destroy_active" @update:modelValue="addPrivilege(record)">
+                <lesli-toggle v-if="value" v-model="record.destroy_active" @update:modelValue="addPrivilege(record.destroy_active, record.destroy_action)">
                 </lesli-toggle>
             </template>
         </lesli-table>
