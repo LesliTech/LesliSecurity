@@ -68,7 +68,7 @@ const props = defineProps({
     appMountPath: {
         type: String,
         required: false,
-        default: "administration/roles",
+        default: "guard/roles",
     }
 })
 
@@ -91,7 +91,7 @@ function toggleEditor() {
 
 </script>
 <template>
-    <section class="application-component">
+    <lesli-application-container>
         <lesli-header :title="'Privileges for: ' + storeRole.role.name + ' role '">
             <lesli-button icon="list" :to="url.root(props.appMountPath)">
                 All roles
@@ -107,5 +107,5 @@ function toggleEditor() {
         <lesli-toolbar @search="storeRole.searchDescriptors"></lesli-toolbar>
         <componentPrivilegeStandard v-if="editor == 'standard'"></componentPrivilegeStandard>
         <componentPrivilegeCustom v-if="editor == 'custom'"></componentPrivilegeCustom>
-    </section>
+    </lesli-application-container>
 </template>

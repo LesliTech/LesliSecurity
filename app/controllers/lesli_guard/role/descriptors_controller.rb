@@ -37,7 +37,7 @@ module LesliGuard
         before_action :set_role_descriptor, only: %i[ show update destroy ]
 
         def index 
-            respond_with_successful(Role::Descriptor.index(current_user, @query, @role))
+            respond_with_successful(RoleDescriptorService.new(current_user).index(@role))
         end
 
         # POST /role/descriptors

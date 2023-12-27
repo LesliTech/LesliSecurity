@@ -66,7 +66,7 @@ LesliGuard::Engine.routes.draw do
         end 
         scope module: :role do
             resources :privileges
-            resources :descriptors
+            resources :descriptors, only: [:index]
             resources :activities
         end
     end

@@ -34,6 +34,12 @@ Building a better future, one line of code at a time.
 module LesliGuard
     class RoleService < Lesli::ApplicationLesliService
 
+        def find id 
+            L2.info "test"
+            self.resource = current_user.account.roles.find_by_id(id)
+            self
+        end 
+
 
         # @return [Array] Paginated index of users.
         # @description Return a paginated array of users, used mostly in frontend views
@@ -140,14 +146,6 @@ module LesliGuard
             end
 
             self
-        end
-
-        # @overwrite
-        # @return {Object}
-        # @description Finds a role according the ID given
-        def find id
-            #self.resource = current_user.account.roles.find_by_id(id) 
-            #self
         end
 
         def options 

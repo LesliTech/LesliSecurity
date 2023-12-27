@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS development platform.
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -28,22 +28,12 @@ Building a better future, one line of code at a time.
 
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 =end
 
 module LesliGuard
     class RolesController < ApplicationController
+        before_action :set_role, only: %i[ show update destroy ]
 
-        #before_action :set_role, only: %i[ show update destroy ]
-
-        #@return [HTML|JSON] HTML view for listing all roles or a Json that contains a list of all roles
-        #    associated to this *account*
-        #@description Retrieves and returns all roles associated to a *CloudHouse::Account*. The account
-        #    is obtained directly from *current_user*. The HTTP request has to specify
-        #    wheter the HTML or the JSON text should be rendered
-        #@example
-        #    # Executing this controller's action from javascript's frontend
-        #    this.http.get(`127.0.0.1/house/roles`);
         def index
             respond_to do |format|
                 format.html { }
@@ -54,24 +44,10 @@ module LesliGuard
             end
         end
 
-        # @return [HTML|Json] HTML view showing the requested role or a Json that contains the
-        #     information of the role. If there is an error, an explanation message is sent
-        # @description Retrieves and returns the requested roles. The id of the
-        #     role is within the *params* attribute of the controller. The HTTP request has to specify
-        #     wheter the HTML or the JSON text should be rendered. This is the only method that uses the role
-        #     code instead of the ID for searching.
-        # @example
-        #     # Executing this controller's action from javascript's frontend
-        #     let role_id = 1;
-        #     this.http.get(`127.0.0.1/roles/${role_id}`);
         def show
             respond_to do |format|
                 format.html {  }
-                format.json {
-                    return respond_with_not_found unless @role.found?
-
-                    respond_with_successful(@role.show)
-                }
+                format.json { respond_with_successful(@role.show) }
             end
         end
 
@@ -175,7 +151,8 @@ module LesliGuard
         #     puts @role
         #     # This will either display nil or an instance of Role
         def set_role
-            @role = RoleServices.new(current_user).find(params[:id])
+            @role = RoleService.new(current_user, @query).find(params[:id])
+            return respond_with_not_found unless @role.found?
         end
 
         # @return [Parameters] Allowed parameters for the role
