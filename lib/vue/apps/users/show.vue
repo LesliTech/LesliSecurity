@@ -49,15 +49,10 @@ const route = useRoute()
 // · import profile components
 import informationCard from "LesliGuard/apps/users/components/information-card.vue"
 import informationForm from "LesliGuard/apps/users/components/information-form.vue"
+import managementRoles from "LesliGuard/apps/users/components/management-roles.vue"
 import managementSession from "LesliGuard/apps/users/components/management-sessions.vue"
 import managementSettings from "LesliGuard/apps/users/components/management-settings.vue"
 import managementSecurity from "LesliGuard/apps/users/components/management-security.vue"
-
-/*
-import informationForm from "CloudAdmin/apps/users/components/information-form.vue"
-import managementRoles from "CloudAdmin/apps/users/components/management-roles.vue"
-
-*/
 
 
 // · translations
@@ -92,6 +87,10 @@ onMounted(() => {
                 <information-form></information-form>
             </lesli-tab-item>
 
+            <lesli-tab-item icon="security" :title="translations.guard.users.tab_roles_and_privileges">
+                <management-roles></management-roles>
+            </lesli-tab-item>
+
             <lesli-tab-item icon="lock_outline" :title="translations.guard.users.tab_security">
                 <management-security></management-security>
             </lesli-tab-item>
@@ -112,9 +111,7 @@ onMounted(() => {
             <lesli-tab-item icon="info_outline" :title="translations.core.users.view_tab_title_information">
                 <information-form></information-form>
             </lesli-tab-item>
-            <lesli-tab-item icon="security" :title="translations.core.users.view_tab_title_roles_and_privileges">
-                <management-roles></management-roles>
-            </lesli-tab-item>
+            
             <lesli-tab-item icon="lock_outline" :title="translations.core.users.view_tab_title_security || 'Security'">
                 <management-security></management-security>
             </lesli-tab-item>

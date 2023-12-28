@@ -33,6 +33,11 @@ Building a better future, one line of code at a time.
 module LesliGuard
     class UserService < Lesli::ApplicationLesliService
 
+        def find id
+            #super(current_user.account.users.joins(:detail).find_by(id: id))
+            super(current_user.account.users.find_by(id: id))
+        end
+
         # @return [Array] Paginated index of users.
         # @description Return a paginated array of users, used mostly in frontend views
         # TODO: Implement pg_search
@@ -253,11 +258,6 @@ module LesliGuard
             resource.logs.create({ title: "revoke_access", description: "by_user: " + current_user.email })
         end
 
-        def find id
-            #super(current_user.account.users.joins(:detail).find_by(id: id))
-            super(current_user.account.users.find_by(id: id))
-        end
-
         def sessions(current_session_id)
             current_user.sessions
             .joins(:user)
@@ -274,6 +274,31 @@ module LesliGuard
             .page(query[:pagination][:page])
             .per(query[:pagination][:perPage])
             .order(updated_at: :desc)
+        end
+
+        def available_roles
+            roles = current_user.account.roles
+            .joins(%(
+                left join lesli_user_powers
+                on lesli_user_powers.role_id = lesli_roles.id
+                and lesli_user_powers.deleted_at is null
+                and lesli_user_powers.user_id = #{ resource.id }
+            ))
+            #.where("object_level_permission < ?", current_user.max_object_level_permission)
+            .order(object_level_permission: :desc)
+            .select(
+                "coalesce(lesli_roles.id, lesli_user_powers.role_id) as id", 
+                "name", 
+                "object_level_permission",
+                "case when lesli_user_powers.role_id is null then false else true end as active"
+            )
+
+            # only owner can assign any role
+            #unless self.has_roles?("owner")
+            #    roles = roles.where("object_level_permission < ?", (self.roles.map{ |r| r[:object_level_permission] }).max)
+            #end
+    
+            roles || []
         end
     end
 end

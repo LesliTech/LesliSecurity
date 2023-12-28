@@ -2,9 +2,7 @@
 :en:
   lesli_guard:
     users:
-      table_header_name: Name
-      table_header_last_activity: Last activity
-      table_header_last_sign_in: Last sign in
+      tab_roles_and_privileges: Roles and privileges
       table_header_email: Email
       table_header_roles: Roles
       table_header_status: Status
@@ -13,6 +11,9 @@
       column_last_name: Last name
       column_telephone: Telephone
       column_title: Title
+      table_header_name: Name
+      table_header_last_activity: Last activity
+      table_header_last_sign_in: Last sign in
       column_address: Address
       tab_information: Information
       column_active: Active

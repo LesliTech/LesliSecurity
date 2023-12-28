@@ -56,6 +56,15 @@ LesliGuard::Engine.routes.draw do
             # sessions management
             resources :sessions, only: [:index, :destroy]
 
+            # assign and remove roles to users 
+            resources :roles, only: [:index, :create, :destroy]
+
+            # shortcuts
+            resources :shortcuts, only: [:index, :create, :update, :destroy]
+
+            # configuration 
+            resources :settings, only: [:create]
+
         end
     end
 
