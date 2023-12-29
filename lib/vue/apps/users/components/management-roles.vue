@@ -76,7 +76,6 @@ onMounted(() => {
             <h4>{{ role.name }}</h4>
             <p style="color:#aaa;">
                 {{ role.description }}
-                Profile view, Role view, Role create, Role update
             </p>
         </div>
         <div class="media-right pt-4">

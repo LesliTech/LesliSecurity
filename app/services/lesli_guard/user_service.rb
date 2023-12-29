@@ -289,6 +289,7 @@ module LesliGuard
             .select(
                 "coalesce(lesli_roles.id, lesli_user_powers.role_id) as id", 
                 "name", 
+                "description",
                 "object_level_permission",
                 "case when lesli_user_powers.role_id is null then false else true end as active"
             )
