@@ -69,7 +69,7 @@ LesliGuard::Engine.routes.draw do
     end
 
     # Work with roles and privileges
-    resources :roles do
+    resources :roles, only: [:index, :show, :edit, :new, :create] do
         collection do
             get :options
         end 

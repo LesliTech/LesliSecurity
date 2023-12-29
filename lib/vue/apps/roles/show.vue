@@ -45,8 +45,8 @@ import { useDescriptor } from "../../stores/descriptor"
 
 
 // · import components
-import componentPrivilegeCustom from "./componentPrivilegeCustom.vue"
-import componentPrivilegeStandard from "./componentPrivilegeStandard.vue"
+import componentPrivilegeCustom from "./components/privilegeCustom.vue"
+import componentPrivilegeStandard from "./components/privilegeStandard.vue"
 
 
 // · initialize/inject plugins

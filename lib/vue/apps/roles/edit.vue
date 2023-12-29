@@ -18,18 +18,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Your Smart Business Assistant. 
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
-@website  https://lesli.tech
+@website  https://www.lesli.tech
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 */
 
 
@@ -37,11 +36,11 @@ Building a better future, one line of code at a time.
 // · import vue tools
 import { ref, reactive, onMounted, watch, computed, inject } from "vue"
 import { useRouter, useRoute } from "vue-router"
-import componentFormRole from "./componentForm.vue"
+import componentFormRole from "./components/form.vue"
 
 
 // · import lesli stores
-import { useRole } from "../../stores/role"
+import { useRole } from "LesliGuard/stores/role"
 
 
 // · initialize/inject plugins
@@ -57,6 +56,9 @@ const storeRole = useRole()
 
 // · 
 const translations = {
+    lesli: {
+        shared: i18n.t("lesli.shared"),
+    },
     core: {
         shared: I18n.t('core.shared'),
         roles: I18n.t('core.roles')
@@ -68,7 +70,7 @@ const props = defineProps({
     appMountPath: {
         type: String,
         required: false,
-        default: "administration/roles",
+        default: "guard/roles",
     }
 })
 
@@ -79,15 +81,15 @@ onMounted(() => {
 
 </script>
 <template>
-    <section class="application-component">
-        <lesli-header :title="'Edit: ' + storeRole.role.name + ' role '">
+    <lesli-application-container>
+        <lesli-header :title="'Edit: ' + storeRole.role.payload.name + ' role '">
             <lesli-button icon="list" :to="url.root(props.appMountPath)">
-                {{  translations.core.roles.view_btn_roles_list }}
+                {{  translations.lesli.shared.button_list }}
             </lesli-button>
-            <lesli-button icon="settings" :to="url.root(props.appMountPath+`/${storeRole.role.id}`)">
-               {{  translations.core.roles.view_btn_edit_privilege_actions }}
-            </lesli-button>
+            <lesli-button-link icon="settings" :to="url.root(props.appMountPath+`/${storeRole.role.id}`)">
+               {{  translations.lesli.shared.button_settings }}
+            </lesli-button-link>
         </lesli-header>
         <componentFormRole></componentFormRole>
-    </section>
+    </lesli-application-container>
 </template>

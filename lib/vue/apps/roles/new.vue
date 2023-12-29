@@ -1,6 +1,5 @@
 <script setup>
 /*
-
 Lesli
 
 Copyright (c) 2023, Lesli Technologies, S. A.
@@ -32,11 +31,13 @@ Building a better future, one line of code at a time.
 */
 
 
-
 // · import vue tools
 import { ref, reactive, onMounted, watch, computed, inject } from "vue"
 import { useRouter, useRoute } from "vue-router"
-import componentFormRole from "./componentForm.vue"
+
+
+// · 
+import componentFormRole from "./components/form.vue"
 
 
 // · import lesli stores
@@ -62,6 +63,7 @@ const translations = {
     }
 }
 
+
 // · defining props
 const props = defineProps({
     appMountPath: {
@@ -69,10 +71,6 @@ const props = defineProps({
         required: false,
         default: "administration/roles",
     }
-})
-
-// · 
-onMounted(() => {
 })
 
 </script>

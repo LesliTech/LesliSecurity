@@ -35,7 +35,6 @@ module LesliGuard
     class RoleService < Lesli::ApplicationLesliService
 
         def find id 
-            L2.info "test"
             self.resource = current_user.account.roles.find_by_id(id)
             self
         end 

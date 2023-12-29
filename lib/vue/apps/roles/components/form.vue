@@ -1,6 +1,5 @@
 <script setup>
 /*
-
 Lesli
 
 Copyright (c) 2023, Lesli Technologies, S. A.
@@ -18,18 +17,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Your Smart Business Assistant. 
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
 
 @contact  hello@lesli.tech
-@website  https://lesli.tech
+@website  https://www.lesli.tech
 @license  GPLv3 http://www.gnu.org/licenses/gpl-3.0.en.html
 
-// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
+// · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 */
 
 
@@ -40,7 +38,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useRole } from "../../stores/role"
+import { useRole } from "LesliGuard/stores/role"
 
 
 // · initialize/inject plugins
@@ -48,6 +46,7 @@ const router = useRouter()
 const route = useRoute()
 const msg = inject("msg")
 const url = inject("url")
+const olpSelected = ref(0)
 
 
 // · 
@@ -56,22 +55,14 @@ const storeRole = useRole()
 
 // · 
 const translations = {
+    lesli: {
+        shared: i18n.t("lesli.shared")
+    },
     core: {
         shared: I18n.t('core.shared'),
         roles: I18n.t('core.roles')
     }
 }
-
-
-// · 
-onMounted(() => {
-    if (route.params.id) {
-        storeRole.fetchRole(route.params.id)
-    } else {
-        storeRole.$reset()
-    }
-    storeRole.getOptions()
-})
 
 
 // · 
@@ -87,10 +78,21 @@ function submitRole() {
 
 
 // · 
-function isObjectLevelPermissionSelected(olp) {
-    return storeRole.role.object_level_permission == olp
+function selectObjectLevelPermission(olpSelectedInForm) {
+    olpSelected.value = olpSelectedInForm
+    storeRole.role.payload.object_level_permission = olpSelectedInForm
 }
 
+
+// · 
+onMounted(() => {
+    if (route.params.id) {
+        storeRole.getRole(route.params.id)
+    } else {
+        storeRole.$reset()
+    }
+    storeRole.getOptions()
+})
 </script>
 <template>
     <lesli-form @submit="submitRole">
@@ -202,16 +204,17 @@ function isObjectLevelPermissionSelected(olp) {
                 Hierarchical level
                 <sup class="has-text-danger">*</sup>
             </label>
+
             <ul class="hierarchical_level_selector">
-                <li :class="['hover', 'p-1', { 'has-background-info has-text-light' : isObjectLevelPermissionSelected(olp.level) }]"
+                <li :class="['hover', 'p-1', { 'has-background-info has-text-light' : olpSelected == olp.level }]"
                     v-for="(olp, index) in storeRole.options.object_level_permissions" :key="index"
-                    v-on:click="storeRole.role.payload.object_level_permission = olp.level">
+                    @click="selectObjectLevelPermission(olp.level)">
                     <p class="icon-text">
                         <span class="icon">
                             <span class="material-icons">
-                                {{ isObjectLevelPermissionSelected(olp.level) ? 'check_box' : 'check_box_outline_blank' }}
+                                {{ olpSelected == olp.level ? 'check_box' : 'check_box_outline_blank' }}
                             </span>
-                            <i :class="['fas', isObjectLevelPermissionSelected(olp.level) ? 'fa-check' : 'fa-chevron-right']"></i>
+                            <i :class="['fas', olpSelected == olp.level ? 'fa-check' : 'fa-chevron-right']"></i>
                         </span>
                         <span>
                             {{ `${translations.core.roles.view_text_level || 'Level' } ${ index + 1 }` }}
@@ -227,7 +230,7 @@ function isObjectLevelPermissionSelected(olp) {
         <div class="field is-grouped">
             <div class="control">
                 <lesli-button main icon="save" :loading="storeRole.role.loading">
-                    Save
+                    {{ translations.lesli.shared.button_save }}
                 </lesli-button>      
             </div>
         </div>
