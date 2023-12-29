@@ -67,7 +67,6 @@ module LesliGuard
             descriptors = descriptors.select(
                 :id,
                 :name,
-                :method,
                 "coalesce(actions.total, 0) as privileges_count",
                 Date2.new.date_time.db_timestamps("lesli_descriptors")
             )
@@ -93,7 +92,6 @@ module LesliGuard
             { 
                 :id => resource.id,
                 :name => resource.name,
-                :category => resource.method,
                 :privileges => resource.privileges
                 .joins(system_controller_action: :system_controller)
                 .select(

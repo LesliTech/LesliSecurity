@@ -157,7 +157,7 @@ function updateDescriptor(descriptor) {
         </template>
 
         <template #power_list="{ record, value }">
-            <lesli-toggle v-if="record.has_show" v-model="record.power_show" @change="updateDescriptor(record.show)">
+            <lesli-toggle v-if="record.has_list" v-model="record.power_list" @change="updateDescriptor(record.list)">
             </lesli-toggle>
         </template>
         <template #power_index="{ record, value }">

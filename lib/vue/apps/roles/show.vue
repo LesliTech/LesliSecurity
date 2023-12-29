@@ -60,8 +60,10 @@ const url = inject("url")
 const storeRole = useRole()
 const storeDescriptor = useDescriptor()
 
+
 // · 
 const editor = ref('standard')
+
 
 // · defining props
 const props = defineProps({
@@ -72,10 +74,11 @@ const props = defineProps({
     }
 })
 
+
 // · 
 onMounted(() => {
     storeRole.$reset()
-    storeRole.fetchRole(route.params.id)
+    storeRole.getRole(route.params.id)
 })
 
 
