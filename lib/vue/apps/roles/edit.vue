@@ -76,13 +76,13 @@ const props = defineProps({
 
 // · 
 onMounted(() => {
-    storeRole.fetchRole(route.params.id)
+    storeRole.getRole(route.params.id)
 })
 
 </script>
 <template>
     <lesli-application-container>
-        <lesli-header :title="'Edit: ' + storeRole.role.payload.name + ' role '">
+        <lesli-header :title="'Edit: ' + storeRole.role.name + ' role '">
             <lesli-button icon="list" :to="url.root(props.appMountPath)">
                 {{  translations.lesli.shared.button_list }}
             </lesli-button>

@@ -80,7 +80,7 @@ function submitRole() {
 // · 
 function selectObjectLevelPermission(olpSelectedInForm) {
     olpSelected.value = olpSelectedInForm
-    storeRole.role.payload.object_level_permission = olpSelectedInForm
+    storeRole.role.object_level_permission = olpSelectedInForm
 }
 
 
@@ -104,7 +104,7 @@ onMounted(() => {
                 <sup class="has-text-danger">*</sup>
             </label>
             <div class="control">
-                <input v-model="storeRole.role.payload.name" class="input" type="text" required />
+                <input v-model="storeRole.role.name" class="input" type="text" required />
             </div>
         </div>
 
@@ -114,7 +114,7 @@ onMounted(() => {
                 Description
             </label>
             <div class="control">
-                <input v-model="storeRole.role.payload.description" class="input" type="text" />
+                <input v-model="storeRole.role.description" class="input" type="text" />
             </div>
         </div>
 
@@ -122,7 +122,7 @@ onMounted(() => {
         <div class="field">
             <label class="label">Default path</label>
             <div class="control">
-                <input v-model="storeRole.role.payload.path_default" class="input" type="text" :placeholder="translations.core.roles.view_placeholder_default_path_at_login">
+                <input v-model="storeRole.role.path_default" class="input" type="text" :placeholder="translations.core.roles.view_placeholder_default_path_at_login">
             </div>
             <p class="help">Default path to redirect after login.</p>
         </div>
@@ -137,7 +137,7 @@ onMounted(() => {
             <div class="control">
                 <div class="select">
                     <lesli-select 
-                        v-model="storeRole.role.payload.path_limited"
+                        v-model="storeRole.role.path_limited"
                         :options="[{
                             label: translations.core.roles.view_text_limit_to_path,
                             value: true
@@ -160,7 +160,7 @@ onMounted(() => {
             <div class="control">
                 <div class="select">
                     <lesli-select 
-                        v-model="storeRole.role.payload.isolated"
+                        v-model="storeRole.role.isolated"
                         :options="[{
                             label: translations.core.roles.view_text_restrict_data_access,
                             value: true
@@ -183,7 +183,7 @@ onMounted(() => {
             <div class="control">
                 <div class="select">
                     <lesli-select 
-                        v-model="storeRole.role.payload.active"
+                        v-model="storeRole.role.active"
                         :options="[{
                             label: translations.core.roles.view_text_active,
                             value: true
