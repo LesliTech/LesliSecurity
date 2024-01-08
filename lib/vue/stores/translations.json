@@ -1,6 +1,10 @@
 {
   "en": {
     "lesli": {
+      "application": {
+        "navigation_logout": "Logout",
+        "navigation_my_profile": "My profile"
+      },
       "shared": {
         "button_add_new": "Add new",
         "button_delete": "Delete",
@@ -44,6 +48,10 @@
   },
   "es": {
     "lesli": {
+      "application": {
+        "navigation_logout": "Cerrar sesión",
+        "navigation_my_profile": "Mi perfil"
+      },
       "shared": {
         "button_add_new": "Agregar nuevo",
         "button_delete": "Eliminar",

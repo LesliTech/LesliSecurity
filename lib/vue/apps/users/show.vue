@@ -76,7 +76,11 @@ const tab = ref(0)
 onMounted(() => {
     // storeUser.$reset()
     // storeUser.getOptions()
-    storeUser.getUser(route.params?.id)
+    if (route.params?.id) {
+        storeUser.getUser(route.params?.id)
+    } else {
+        storeUser.getUser(lesli.current_user.id)   
+    }
 })
 </script>
 <template>
