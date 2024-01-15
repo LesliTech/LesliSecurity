@@ -106,10 +106,13 @@ onMounted(() => {
             <lesli-tab-item icon="verified_user" title="Privileges">
                 <componentPrivilegeStandard></componentPrivilegeStandard>
             </lesli-tab-item>
-            <lesli-tab-item icon="local_police" title="Custom privileges">
-                <componentPrivilegeCustom></componentPrivilegeCustom>
-            </lesli-tab-item>
         </lesli-tabs>
+
+        <!--
+        <lesli-tab-item icon="local_police" title="Custom privileges">
+            <componentPrivilegeCustom></componentPrivilegeCustom>
+        </lesli-tab-item>
+        -->
         
     </lesli-application-container>
 </template>

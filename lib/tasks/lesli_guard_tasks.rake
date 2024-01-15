@@ -41,10 +41,10 @@ namespace :lesli_guard do
 
         L2.msg("Syncing privileges for all the available roles")
 
-        Lesli::Descriptor.where(:name => "owner").each do |descriptor|
+        Lesli::Descriptor.where(:name => ["owner", "sysadmin"]).each do |descriptor|
            descriptor.initialize_descriptor_privileges
         end
 
-        Lesli::RolePowerOperator.new(Lesli::Role.all.pluck(:id)).synchronize
+        Lesli::RoleDescriptorOperator.new(Lesli::Role.all.pluck(:id)).synchronize
     end
 end
