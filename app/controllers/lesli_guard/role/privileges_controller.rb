@@ -33,16 +33,16 @@ Building a better future, one line of code at a time.
 
 module LesliGuard
     class Role::PrivilegesController < ApplicationController
-        before_action :set_role_privilege, only: %i[]
+        before_action :set_role, only: %i[ index ]
+
+        def index 
+            respond_with_successful(RoleDescriptorService.new(current_user).index_with_privileges(@role))
+        end
 
         private
 
-        # Use callbacks to share common setup or constraints between actions.
-        def set_role_privilege
-        end
-
-        # Only allow a list of trusted parameters through.
-        def role_privilege_params
+        def set_role
+            @role = current_user.account.roles.find_by(id: params[:role_id])
         end
     end
 end

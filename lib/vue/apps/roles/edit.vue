@@ -39,6 +39,12 @@ import { useRouter, useRoute } from "vue-router"
 import componentFormRole from "./components/form.vue"
 
 
+// · import components
+import componentDescriptors from "./components/descriptors.vue"
+import componentPrivilegeCustom from "./components/privilegeCustom.vue"
+import componentPrivilegeStandard from "./components/privilegeStandard.vue"
+
+
 // · import lesli stores
 import { useRole } from "LesliGuard/stores/role"
 
@@ -90,6 +96,20 @@ onMounted(() => {
                {{  translations.lesli.shared.button_settings }}
             </lesli-button-link>
         </lesli-header>
-        <componentFormRole></componentFormRole>
+        <lesli-tabs>
+            <lesli-tab-item paddingless icon="info" title="Information">
+                <componentFormRole></componentFormRole>
+            </lesli-tab-item>
+            <lesli-tab-item icon="add_moderator" title="Descriptors">
+                <componentDescriptors></componentDescriptors>
+            </lesli-tab-item>
+            <lesli-tab-item icon="verified_user" title="Privileges">
+                <componentPrivilegeStandard></componentPrivilegeStandard>
+            </lesli-tab-item>
+            <lesli-tab-item icon="local_police" title="Custom privileges">
+                <componentPrivilegeCustom></componentPrivilegeCustom>
+            </lesli-tab-item>
+        </lesli-tabs>
+        
     </lesli-application-container>
 </template>

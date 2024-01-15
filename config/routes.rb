@@ -70,14 +70,14 @@ LesliGuard::Engine.routes.draw do
 
     # Work with roles and privileges
     resources :roles, only: [:index, :show, :edit, :new, :create] do
+        scope module: :role do
+            resources :descriptors, only: [:index, :create, :update, :destroy]
+            resources :privileges, only: [:index]
+            resources :activities
+        end
         collection do
             get :options
         end 
-        scope module: :role do
-            resources :privileges
-            resources :descriptors, only: [:index]
-            resources :activities
-        end
     end
 
     # Descriptor management

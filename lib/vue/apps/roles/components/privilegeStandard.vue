@@ -58,44 +58,48 @@ const columnDescriptors = [{
     field: 'name',
     label: 'Name'
 },{
-    field: 'power_list',
+    field: 'plist',
     label: 'List',
     align: 'center'
 },{
-    field: 'power_index',
+    field: 'pindex',
     label: 'Index',
     align: 'center'
 },{
-    field: 'power_show',
+    field: 'pshow',
     label: 'Show',
     align: 'center'
 },{
-    field: 'power_create',
+    field: 'pcreate',
     label: 'Create',
     align: 'center'
 },{
-    field: 'power_update',
+    field: 'pupdate',
     label: 'Update',
     align: 'center'
 },{
-    field: 'power_destroy',
+    field: 'pdestroy',
     label: 'Delete',
     align: 'center'
 }]
 
 
 // · 
-function updateDescriptor(descriptor) {
-    storeRole.updateDescriptor(descriptor)
+function updatePrivilege(descriptor) {
+    storeRole.updatePrivilege(descriptor)
 }
 
+
+// · 
+onMounted(() => {
+    storeRole.getPrivileges()
+})
 </script>
 <template>
-
     <lesli-table 
         :columns="columnDescriptors"
-        :records="storeRole.descriptors">
-        <template #head(power_list)="{ column }">
+        :records="storeRole.privileges">
+        <template #head(plist)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -105,7 +109,7 @@ function updateDescriptor(descriptor) {
                 <span>{{ column.label }}</span>
             </span>
         </template>
-        <template #head(power_index)="{ column }">
+        <template #head(pindex)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -115,7 +119,7 @@ function updateDescriptor(descriptor) {
                 <span>{{ column.label }}</span>
             </span>
         </template>
-        <template #head(power_show)="{ column }">
+        <template #head(pshow)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -125,7 +129,7 @@ function updateDescriptor(descriptor) {
                 <span>{{ column.label }}</span>
             </span>
         </template>
-        <template #head(power_create)="{ column }">
+        <template #head(pcreate)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -135,7 +139,7 @@ function updateDescriptor(descriptor) {
                 <span>{{ column.label }}</span>
             </span>
         </template>
-        <template #head(power_update)="{ column }">
+        <template #head(pupdate)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -145,7 +149,7 @@ function updateDescriptor(descriptor) {
                 <span>{{ column.label }}</span>
             </span>
         </template>
-        <template #head(power_destroy)="{ column }">
+        <template #head(pdestroy)="{ column }">
             <span class="icon-text">
                 <span class="icon">
                     <span class="material-icons">
@@ -156,29 +160,29 @@ function updateDescriptor(descriptor) {
             </span>
         </template>
 
-        <template #power_list="{ record, value }">
-            <lesli-toggle v-if="record.has_list" v-model="record.power_list" @change="updateDescriptor(record.list)">
-            </lesli-toggle>
+        <template #plist="{ record }">
+            <lesli-toggle v-if="record.has_list" v-model="record.plist" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
-        <template #power_index="{ record, value }">
-            <lesli-toggle v-if="record.has_index" v-model="record.power_index" @change="updateDescriptor(record)">
-            </lesli-toggle>
+        <template #pindex="{ record }">
+            <lesli-toggle v-if="record.has_index" v-model="record.pindex" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
-        <template #power_show="{ record, value }">
-            <lesli-toggle v-if="record.has_show" v-model="record.power_show" @change="updateDescriptor(record.show)">
-            </lesli-toggle>
+        <template #pshow="{ record }">
+            <lesli-toggle v-if="record.has_show" v-model="record.pshow" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
-        <template #power_create="{ record, value }">
-            <lesli-toggle v-if="record.has_create" v-model="record.power_create" @change="updateDescriptor(record.create)">
-            </lesli-toggle>
+        <template #pcreate="{ record }">
+            <lesli-toggle v-if="record.has_create" v-model="record.pcreate" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
-        <template #power_update="{ record, value }">
-            <lesli-toggle v-if="record.has_update" v-model="record.power_update" @change="updateDescriptor(record.update)">
-            </lesli-toggle>
+        <template #pupdate="{ record }">
+            <lesli-toggle v-if="record.has_update" v-model="record.pupdate" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
-        <template #power_destroy="{ record, value }">
-            <lesli-toggle v-if="record.has_destroy" v-model="record.power_destroy" @change="updateDescriptor(record.destroy)">
-            </lesli-toggle>
+        <template #pdestroy="{ record }">
+            <lesli-toggle v-if="record.has_destroy" v-model="record.pdestroy" @change="updatePrivilege(record)">
+            </lesli-toggle>&nbsp;
         </template>
     </lesli-table>
 </template>

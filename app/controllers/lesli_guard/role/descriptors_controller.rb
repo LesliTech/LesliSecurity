@@ -43,24 +43,21 @@ module LesliGuard
         # POST /role/descriptors
         def create
 
-            role_descriptor_status = false
+            system_descriptor = Lesli::Descriptor.find_by(:id => role_descriptor_params[:id])
+            role_power = @role.powers.with_deleted.find_or_create_by(:descriptor => system_descriptor)
 
-            system_descriptor = Descriptor.find_by(:id => role_descriptor_params[:id])
-            role_descriptor = @role.descriptors.with_deleted.find_by(:descriptor => system_descriptor)
+            role_power.recover if role_power.deleted?
             
-            if not role_descriptor
-                role_descriptor = @role.descriptors.new(:descriptor => system_descriptor)
-                role_descriptor_status = role_descriptor.save
-            elsif role_descriptor.deleted?
-                role_descriptor_status = role_descriptor.recover
-            end
+            respond_with_successful(role_power)
+        end
 
-            if role_descriptor_status
-                #Role::Activity.log_create_descriptor(current_user, @role, role_descriptor)
-                respond_with_successful(role_descriptor)
-            else
-                respond_with_error(role_descriptor.errors.full_messages.to_sentence)
-            end
+        def update
+
+            system_descriptor = Lesli::Descriptor.find_by(:id => role_descriptor_params[:id])
+            role_power = @role.powers.with_deleted.find_or_create_by(:descriptor => system_descriptor)
+            
+            respond_with_successful(role_power.update(role_descriptor_params))
+
         end
 
         # DELETE /role/descriptors/1
@@ -68,7 +65,7 @@ module LesliGuard
             return respond_with_not_found unless @role_descriptor
 
             if @role_descriptor.destroy
-                Role::Activity.log_destroy_descriptor(current_user, @role, @role_descriptor)
+                #Role::Activity.log_destroy_descriptor(current_user, @role, @role_descriptor)
                 respond_with_successful
             else
                 respond_with_error(@role_descriptor.errors.full_messages.to_sentence)
@@ -83,13 +80,13 @@ module LesliGuard
 
         def set_role_descriptor
             return respond_with_not_found unless @role 
-            @role_descriptor = @role.descriptors.find_by(system_descriptors_id: params[:id])
+            @role_descriptor = @role.powers.find_by(descriptor_id: params[:id])
+            #@role_descriptor = @role.descriptors.find_by(system_descriptors_id: params[:id])
         end
 
         # Only allow a list of trusted parameters through.
         def role_descriptor_params
-            params.require(:role_descriptor).permit(:id, :name, :privilege_index)
+            params.require(:role_descriptor).permit(:id, :pindex, :plist, :pshow, :pcreate, :pupdate, :pdestroy)
         end
-
     end
 end
