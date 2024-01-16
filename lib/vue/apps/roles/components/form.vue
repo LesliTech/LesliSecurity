@@ -53,6 +53,16 @@ const olpSelected = ref(0)
 const storeRole = useRole()
 
 
+// · defining props
+const props = defineProps({
+    editable: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
+})
+
+
 // · 
 const translations = {
     lesli: {
@@ -95,7 +105,7 @@ onMounted(() => {
 })
 </script>
 <template>
-    <lesli-form @submit="submitRole">
+    <lesli-form :editable="props.editable" @submit="submitRole">
 
         <!-- Role name -->
         <div class="field">
@@ -227,7 +237,7 @@ onMounted(() => {
 
         <hr>
 
-        <div class="field is-grouped">
+        <div class="field is-grouped" v-if="props.editable">
             <div class="control">
                 <lesli-button main icon="save" :loading="storeRole.role.loading">
                     {{ translations.lesli.shared.button_save }}

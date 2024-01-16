@@ -36,10 +36,10 @@ Building a better future, one line of code at a time.
 // · import vue tools
 import { ref, reactive, onMounted, watch, computed, inject } from "vue"
 import { useRouter, useRoute } from "vue-router"
-import componentFormRole from "./components/form.vue"
 
 
 // · import components
+import componentFormRole from "./components/form.vue"
 import componentDescriptors from "./components/descriptors.vue"
 import componentPrivilegeCustom from "./components/privilegeCustom.vue"
 import componentPrivilegeStandard from "./components/privilegeStandard.vue"
@@ -89,16 +89,16 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header :title="'Edit: ' + storeRole.role.name + ' role '">
-            <lesli-button icon="list" :to="url.root(props.appMountPath)">
+            <lesli-button-link icon="list" :to="url.guard('roles')">
                 {{  translations.lesli.shared.button_list }}
-            </lesli-button>
-            <lesli-button-link icon="settings" :to="url.root(props.appMountPath+`/${storeRole.role.id}`)">
+            </lesli-button-link>
+            <lesli-button-link main icon="visibility" :to="url.guard('roles/:id', storeRole.role.id)">
                {{  translations.lesli.shared.button_settings }}
             </lesli-button-link>
         </lesli-header>
         <lesli-tabs>
             <lesli-tab-item paddingless icon="info" title="Information">
-                <componentFormRole></componentFormRole>
+                <componentFormRole :editable="true"></componentFormRole>
             </lesli-tab-item>
             <lesli-tab-item icon="add_moderator" title="Descriptors">
                 <componentDescriptors></componentDescriptors>

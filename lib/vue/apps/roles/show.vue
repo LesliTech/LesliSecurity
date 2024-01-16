@@ -45,6 +45,7 @@ import { useDescriptor } from "../../stores/descriptor"
 
 
 // · import components
+import componentFormRole from "./components/form.vue"
 import componentPrivilegeCustom from "./components/privilegeCustom.vue"
 import componentPrivilegeStandard from "./components/privilegeStandard.vue"
 
@@ -95,20 +96,15 @@ function toggleEditor() {
 </script>
 <template>
     <lesli-application-container>
-        <lesli-header :title="'Privileges for: ' + storeRole.role.name + ' role '">
-            <lesli-button icon="list" :to="url.root(props.appMountPath)">
+        <lesli-header :title="storeRole.role.name + ' role'">
+            <lesli-button icon="list" :to="url.guard('roles')">
                 All roles
             </lesli-button>
-            <lesli-button icon="edit" :to="url.admin('roles/:id/edit', route.params.id)">
+            <lesli-button-link warning icon="edit" :to="url.guard('roles/:id/edit', route.params.id)">
                 Edit role
-            </lesli-button>
-            <lesli-button icon="admin_panel_settings" :solid="editor == 'custom'" @click="toggleEditor">
-                Aditional privileges
-            </lesli-button>
+            </lesli-button-link>
         </lesli-header>
 
-        <lesli-toolbar @search="storeRole.searchDescriptors"></lesli-toolbar>
-        <componentPrivilegeStandard v-if="editor == 'standard'"></componentPrivilegeStandard>
-        <componentPrivilegeCustom v-if="editor == 'custom'"></componentPrivilegeCustom>
+        <componentFormRole :editable="false"></componentFormRole>
     </lesli-application-container>
 </template>
