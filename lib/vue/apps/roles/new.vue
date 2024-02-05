@@ -81,6 +81,6 @@ const props = defineProps({
                 All roles
             </lesli-button>
         </lesli-header>
-        <componentFormRole></componentFormRole>
+        <componentFormRole :editable="true"></componentFormRole>
     </lesli-application-container>
 </template>

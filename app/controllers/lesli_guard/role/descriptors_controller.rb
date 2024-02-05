@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS development platform.
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -28,7 +28,6 @@ Building a better future, one line of code at a time.
 
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 =end
 
 module LesliGuard
@@ -53,11 +52,17 @@ module LesliGuard
 
         def update
 
+            # Get the descriptor we want to take the privileges to be activated and added
+            # into the role, this can be done through the role power table
             system_descriptor = Lesli::Descriptor.find_by(:id => role_descriptor_params[:id])
-            role_power = @role.powers.with_deleted.find_or_create_by(:descriptor => system_descriptor)
-            
-            respond_with_successful(role_power.update(role_descriptor_params))
 
+            # Check if the descriptor is already added to the role, if not, we create the new record
+            # assigning the descriptor to the role as power 
+            role_power = @role.powers.with_deleted.find_or_create_by(:descriptor => system_descriptor)
+
+            # Now we update the privileges that the role wants to inherit from the privileges
+            # available in the descriptor
+            respond_with_successful(role_power.update(role_descriptor_params))
         end
 
         # DELETE /role/descriptors/1

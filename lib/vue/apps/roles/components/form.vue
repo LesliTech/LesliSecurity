@@ -139,74 +139,79 @@ onMounted(() => {
 
         <hr />
 
-        <!-- Role limited to path -->
-        <div class="field">
-            <label class="label">
-                Limited?
-            </label>
-            <div class="control">
-                <div class="select">
-                    <lesli-select 
-                        v-model="storeRole.role.path_limited"
-                        :options="[{
-                            label: translations.core.roles.view_text_limit_to_path,
-                            value: true
-                        }, {
-                            label: translations.core.roles.view_text_allow_all_paths,
-                            value: false
-                        }]">
-                    </lesli-select>
+        <div class="columns">
+            <div class="column">
+                <!-- Role limited to path -->
+                <div class="field">
+                    <label class="label">
+                        Limited?
+                    </label>
+                    <div class="control">
+                        <div class="select">
+                            <lesli-select 
+                                v-model="storeRole.role.path_limited"
+                                :options="[{
+                                    label: translations.core.roles.view_text_limit_to_path,
+                                    value: true
+                                }, {
+                                    label: translations.core.roles.view_text_allow_all_paths,
+                                    value: false
+                                }]">
+                            </lesli-select>
+                        </div>
+                    </div>
+                    <p class="help">Always redirect role to the default path</p>
                 </div>
             </div>
-            <p class="help">Always redirect role to the default path</p>
-        </div>
-
-        <!-- Role is isolated -->
-        <div class="field">
-            <label class="label">
-                Isolated?
-                <sup class="has-text-danger">*</sup>
-            </label>
-            <div class="control">
-                <div class="select">
-                    <lesli-select 
-                        v-model="storeRole.role.isolated"
-                        :options="[{
-                            label: translations.core.roles.view_text_restrict_data_access,
-                            value: true
-                        }, {
-                            label: translations.core.roles.view_text_allow_to_see_all_the_data,
-                            value: false
-                        }]">
-                    </lesli-select>
+            <div class="column">
+                <!-- Role is isolated -->
+                <div class="field">
+                    <label class="label">
+                        Isolated?
+                        <sup class="has-text-danger">*</sup>
+                    </label>
+                    <div class="control">
+                        <div class="select">
+                            <lesli-select 
+                                v-model="storeRole.role.isolated"
+                                :options="[{
+                                    label: translations.core.roles.view_text_restrict_data_access,
+                                    value: true
+                                }, {
+                                    label: translations.core.roles.view_text_allow_to_see_all_the_data,
+                                    value: false
+                                }]">
+                            </lesli-select>
+                        </div>
+                    </div>
+                    <p class="help">Force the role to query only the data that belongs to the current user</p>
                 </div>
             </div>
-            <p class="help">Force the role to query only the data that belongs to the current user</p>
-        </div>
-
-        <!-- Enable/disable role -->
-        <div class="field">
-            <label class="label">
-                Status
-                <sup class="has-text-danger">*</sup>
-            </label>
-            <div class="control">
-                <div class="select">
-                    <lesli-select 
-                        v-model="storeRole.role.active"
-                        :options="[{
-                            label: translations.core.roles.view_text_active,
-                            value: true
-                        },{
-                            label: translations.core.roles.view_text_disabled,
-                            value: false
-                        }]">
-                    </lesli-select>
+            <div class="column">
+                <!-- Enable/disable role -->
+                <div class="field">
+                    <label class="label">
+                        Status
+                        <sup class="has-text-danger">*</sup>
+                    </label>
+                    <div class="control">
+                        <div class="select">
+                            <lesli-select 
+                                v-model="storeRole.role.active"
+                                :options="[{
+                                    label: translations.core.roles.view_text_active,
+                                    value: true
+                                },{
+                                    label: translations.core.roles.view_text_disabled,
+                                    value: false
+                                }]">
+                            </lesli-select>
+                        </div>
+                    </div>
+                    <p class="help">Activate/deactivate role</p>
                 </div>
             </div>
         </div>
-
-        <hr>
 
         <!-- Object level permission -->
         <div class="field">

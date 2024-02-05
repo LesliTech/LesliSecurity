@@ -129,7 +129,7 @@ function showUser(user) {
 <template>
     <lesli-application-container>
         <lesli-header :title="translations.guard.users.view_title + ' (' + storeUsers.index.pagination.total + ')' ">
-            <lesli-button icon="add" :to="url.root(props.appMountPath+`/new`)">
+            <lesli-button solid icon="add" :to="url.root(props.appMountPath+`/new`)">
                 {{ translations.lesli.shared.button_add_new }}
             </lesli-button>
             <lesli-button

@@ -88,14 +88,14 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header title="Role Descriptors">
+            <lesli-link solid icon="add" :to="url.guard('descriptors/new')">
+                Add descriptor
+            </lesli-link>
             <lesli-button icon="refresh"
                 :loading="storeDescriptors.index.loading"
                 @click="storeDescriptors.getDescriptors()">
                 Reload
             </lesli-button>
-            <lesli-link main icon="add" :to="url.guard('descriptors/new')">
-                Add descriptor
-            </lesli-link>
         </lesli-header>
 
         <lesli-toolbar @search="storeDescriptors.search"></lesli-toolbar>

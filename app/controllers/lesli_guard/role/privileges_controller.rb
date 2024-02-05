@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see http://www.gnu.org/licenses/.
 
-Lesli · Ruby on Rails SaaS development platform.
+Lesli · Ruby on Rails SaaS Development Framework.
 
 Made with ♥ by https://www.lesli.tech
 Building a better future, one line of code at a time.
@@ -28,7 +28,6 @@ Building a better future, one line of code at a time.
 
 // · ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~     ~·~
 // · 
-
 =end
 
 module LesliGuard
@@ -36,7 +35,7 @@ module LesliGuard
         before_action :set_role, only: %i[ index ]
 
         def index 
-            respond_with_successful(RoleDescriptorService.new(current_user).index_with_privileges(@role))
+            respond_with_successful(RoleDescriptorService.new(current_user).privileges(@role))
         end
 
         private

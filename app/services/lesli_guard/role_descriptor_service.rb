@@ -2,27 +2,45 @@ module LesliGuard
     class RoleDescriptorService < Lesli::ApplicationLesliService
 
         def index role
+
+            # Left join to the role power table, so we can get the records
+            # from the assigned descriptors and the available descriptors
+            sanitized_role_power_join = ActiveRecord::Base.sanitize_sql([%(
+                left join lesli_role_powers 
+                on lesli_role_powers.descriptor_id = lesli_descriptors.id 
+                and lesli_role_powers.role_id = ?
+            ), role.id])
+
             current_user.account.descriptors
             .where.not(:name => "owner")
-            .joins(%(
-                left join lesli_role_powers 
-                on lesli_role_powers.descriptor_id = lesli_descriptors.id
-            )).select(
+            .joins(sanitized_role_power_join)
+            .select(
                 "coalesce(lesli_role_powers.descriptor_id, lesli_descriptors.id) as id", 
                 "lesli_descriptors.name as name",
                 "lesli_descriptors.description as description",
-                "case when lesli_role_powers.deleted_at is null then true else false end as active"
+                # we take a descriptor as active if it is already in the role power table
+                # to validate this we use the following logic:
+                #   if the role power is not deleted (deleted_at column must be null)
+                #   and the descriptor_id is not null in the role power table
+                "case when lesli_role_powers.deleted_at is null and lesli_role_powers.id is not null then true else false end as active"
             )
         end
 
-        def index_with_privileges role
+        def privileges role
+
+            # Inner join the role power table with the descriptors
+            # so we get only the descriptors that are assigned to the specific role
+            sanitized_role_power_join = ActiveRecord::Base.sanitize_sql([%(
+                inner join lesli_role_powers 
+                on lesli_role_powers.descriptor_id = lesli_descriptors.id 
+                and lesli_role_powers.deleted_at is null
+                and lesli_role_powers.role_id = ?
+            ), role.id])
+
             current_user.account.descriptors
             .where.not(:name => "owner")
-            .joins(%(
-                right join lesli_role_powers 
-                on lesli_role_powers.descriptor_id = lesli_descriptors.id
-                and lesli_role_powers.deleted_at is NULL
-            )).select(
+            .joins(sanitized_role_power_join)
+            .select(
                 "coalesce(lesli_role_powers.descriptor_id, lesli_descriptors.id) as id", 
                 "lesli_descriptors.name as name", 
                 "lesli_role_powers.plist",
