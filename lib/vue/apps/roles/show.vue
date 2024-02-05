@@ -100,9 +100,9 @@ function toggleEditor() {
             <lesli-button icon="list" :to="url.guard('roles')">
                 All roles
             </lesli-button>
-            <lesli-button-link main warning icon="edit" :to="url.guard('roles/:id/edit', route.params.id)">
+            <lesli-link main warning icon="edit" :to="url.guard('roles/:id/edit', route.params.id)">
                 Edit role
-            </lesli-button-link>
+            </lesli-link>
         </lesli-header>
         <componentFormRole :editable="false"></componentFormRole>
     </lesli-application-container>

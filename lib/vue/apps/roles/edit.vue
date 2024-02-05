@@ -88,13 +88,13 @@ onMounted(() => {
 </script>
 <template>
     <lesli-application-container>
-        <lesli-header :title="'Edit: ' + storeRole.role.name + ' role '">
-            <lesli-button-link icon="list" :to="url.guard('roles')">
+        <lesli-header :title="'Edit role: ' + storeRole.role.name">
+            <lesli-link icon="list" :to="url.guard('roles')">
                 {{  translations.lesli.shared.button_list }}
-            </lesli-button-link>
-            <lesli-button-link main icon="visibility" :to="url.guard('roles/:id', storeRole.role.id)">
-               {{  translations.lesli.shared.button_settings }}
-            </lesli-button-link>
+            </lesli-link>
+            <lesli-link main icon="visibility" :to="url.guard('roles/:id', storeRole.role.id)">
+               {{  translations.lesli.shared.button_show }}
+            </lesli-link>
         </lesli-header>
         <lesli-tabs>
             <lesli-tab-item paddingless icon="info" title="Information">

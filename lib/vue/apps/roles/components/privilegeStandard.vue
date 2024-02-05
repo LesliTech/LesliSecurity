@@ -36,6 +36,7 @@ Building a better future, one line of code at a time.
 
 // · import vue tools
 import { ref, reactive, onMounted, watch, computed, inject } from "vue"
+import { useRouter } from "vue-router"
 
 
 // · import lesli stores
@@ -46,6 +47,7 @@ import { useDescriptor } from "LesliGuard/stores/descriptor"
 // · initialize/inject plugins
 const msg = inject("msg")
 const url = inject("url")
+const router = useRouter()
 
 
 // · 
@@ -158,6 +160,12 @@ onMounted(() => {
                 </span>
                 <span>{{ column.label }}</span>
             </span>
+        </template>
+
+        <template #name="{ record }">
+            <router-link :to="url.guard('descriptors/:id', record.id).toString()">
+                {{ record.name }}
+            </router-link>
         </template>
 
         <template #plist="{ record }">
