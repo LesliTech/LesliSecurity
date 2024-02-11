@@ -14,7 +14,7 @@
 <div align="center">
     <img 
         style="width:100%;max-width:800px;border-radius:6px;" 
-        alt="Engine screenshot" src="./docs/screenshot.png" />
+        alt="Engine screenshot" src="./docs/images/screenshot.png" />
 </div>
 
 ### Quick start
