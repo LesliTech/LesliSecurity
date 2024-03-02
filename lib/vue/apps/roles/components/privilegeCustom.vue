@@ -39,8 +39,8 @@ import { ref, reactive, onMounted, watch, computed, inject } from "vue"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/stores/role"
-import { useDescriptor } from "LesliGuard/stores/descriptor"
+import { useRole } from "LesliGuard/vue/stores/role"
+import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
 
 
 // · initialize/inject plugins

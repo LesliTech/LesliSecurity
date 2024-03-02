@@ -46,7 +46,7 @@ import componentPrivilegeStandard from "./components/privilegeStandard.vue"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/stores/role"
+import { useRole } from "LesliGuard/vue/stores/role"
 
 
 // · initialize/inject plugins

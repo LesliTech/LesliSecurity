@@ -43,7 +43,7 @@ const url = inject("url")
 
 
 // · import components
-import descriptorForm from "LesliGuard/apps/descriptors/components/form.vue"
+import descriptorForm from "LesliGuard/vue/apps/descriptors/components/form.vue"
 
 
 // · translations

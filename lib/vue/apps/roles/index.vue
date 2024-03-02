@@ -39,7 +39,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useRoles } from "LesliGuard/stores/roles"
+import { useRoles } from "LesliGuard/vue/stores/roles"
 
 
 // · initialize/inject plugins

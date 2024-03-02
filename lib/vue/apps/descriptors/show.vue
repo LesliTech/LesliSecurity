@@ -38,8 +38,8 @@ import { inject, onMounted, ref } from "vue"
 
 
 // · import lesli stores
-import { useDescriptor } from "LesliGuard/stores/descriptor"
-import { useSystemController } from "Lesli/shared/stores/systemController"
+import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
+import { useSystemController } from "Lesli/vue/shared/stores/systemController"
 
 
 // · import vue router composable

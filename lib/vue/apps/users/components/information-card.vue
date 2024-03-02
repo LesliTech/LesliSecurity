@@ -32,7 +32,7 @@ Building a better future, one line of code at a time.
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/stores/user"
+import { useUser } from "LesliGuard/vue/stores/user"
 
 
 // · implement stores

@@ -33,7 +33,7 @@ Building a better future, one line of code at a time.
 */
 
 
-import { useProfile } from "Lesli/shared/stores/profile"
+import { useProfile } from "Lesli/vue/shared/stores/profile"
 
 const storeProfile = useProfile()
 

@@ -40,8 +40,8 @@ import { useRouter } from "vue-router"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/stores/role"
-import { useDescriptor } from "LesliGuard/stores/descriptor"
+import { useRole } from "LesliGuard/vue/stores/role"
+import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
 
 
 // · initialize/inject plugins

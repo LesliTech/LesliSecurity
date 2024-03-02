@@ -37,7 +37,7 @@ import { useRouter } from 'vue-router'
 
 
 // · import lesli stores
-import { useDescriptors } from "LesliGuard/stores/descriptors"
+import { useDescriptors } from "LesliGuard/vue/stores/descriptors"
 
 
 // · initialize/inject plugins

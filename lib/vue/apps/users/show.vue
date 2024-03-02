@@ -37,7 +37,7 @@ import { useRouter, useRoute } from 'vue-router'
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/stores/user"
+import { useUser } from "LesliGuard/vue/stores/user"
 
 
 // · implement stores
@@ -47,12 +47,12 @@ const route = useRoute()
 
 
 // · import profile components
-import informationCard from "LesliGuard/apps/users/components/information-card.vue"
-import informationForm from "LesliGuard/apps/users/components/information-form.vue"
-import managementRoles from "LesliGuard/apps/users/components/management-roles.vue"
-import managementSession from "LesliGuard/apps/users/components/management-sessions.vue"
-import managementSettings from "LesliGuard/apps/users/components/management-settings.vue"
-import managementSecurity from "LesliGuard/apps/users/components/management-security.vue"
+import informationCard from "LesliGuard/vue/apps/users/components/information-card.vue"
+import informationForm from "LesliGuard/vue/apps/users/components/information-form.vue"
+import managementRoles from "LesliGuard/vue/apps/users/components/management-roles.vue"
+import managementSession from "LesliGuard/vue/apps/users/components/management-sessions.vue"
+import managementSettings from "LesliGuard/vue/apps/users/components/management-settings.vue"
+import managementSecurity from "LesliGuard/vue/apps/users/components/management-security.vue"
 
 
 // · translations

@@ -37,8 +37,8 @@ import { useRouter, useRoute } from 'vue-router'
 
 
 // · import lesli stores
-import { useUsers } from "LesliGuard/stores/users"
-import { useRoles } from "LesliGuard/stores/roles"
+import { useUsers } from "LesliGuard/vue/stores/users"
+import { useRoles } from "LesliGuard/vue/stores/roles"
 
 
 // · implement stores

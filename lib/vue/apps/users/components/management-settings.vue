@@ -37,7 +37,7 @@ import { ref, reactive, onMounted, watch, computed } from "vue"
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/stores/user" 
+import { useUser } from "LesliGuard/vue/stores/user" 
 
 
 // · implement stores
