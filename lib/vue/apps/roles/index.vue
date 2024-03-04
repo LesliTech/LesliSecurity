@@ -104,7 +104,7 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header title="Roles &amp; privileges">
-            <lesli-link solid icon="add" :to="url.guard('roles/new')">
+            <lesli-link solid button icon="add" :to="url.guard('roles/new')">
                 Add role
             </lesli-link>
             <lesli-button icon="refresh"
