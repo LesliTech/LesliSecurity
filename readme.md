@@ -1,12 +1,12 @@
 <p align="center">
-	<img width="90" alt="LesliGuard logo" src="./app/assets/images/lesli_guard/vault-logo.svg" />
-    <h3 align="center">Security Management Module for the Lesli Framework.</h3>
+	<img width="90" alt="LesliSecurity logo" src="./app/assets/images/lesli_security/security-logo.svg" />
+    <h3 align="center">Users, Privileges & Access Management for the Lesli Framework.</h3>
 </p>
 
 <hr/>
     <p align="center">
-        <a target="blank" href="https://rubygems.org/gems/lesli_guard">
-            <img src="https://badge.fury.io/rb/lesli_guard.svg" alt="Gem Version" height="24">
+        <a target="blank" href="https://rubygems.org/gems/lesli_security">
+            <img src="https://badge.fury.io/rb/lesli_security.svg" alt="Gem Version" height="24">
         </a>
     </p>
 <hr/>
@@ -20,8 +20,8 @@
 ### Quick start
 
 ```shell
-# Add LesliGuard engine
-bundle add lesli_guard
+# Add LesliSecurity engine
+bundle add lesli_security
 ```
 
 ```shell
@@ -30,9 +30,9 @@ rake lesli:db:setup
 ```
 
 ```ruby
-# Load LesliGuard
+# Load LesliSecurity
 Rails.application.routes.draw do
-    mount LesliGuard::Engine => "/guard"
+    mount LesliSecurity::Engine => "/guard"
 end
 ```
 

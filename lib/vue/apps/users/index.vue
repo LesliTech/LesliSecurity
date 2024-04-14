@@ -37,7 +37,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useUsers } from "LesliGuard/vue/stores/users"
+import { useUsers } from "LesliSecurity/vue/stores/users"
 
 
 // · initialize/inject plugins
@@ -56,7 +56,7 @@ const translations = {
         shared: i18n.t("lesli.shared")
     },
     guard: {
-        users: i18n.t("lesli_guard.users")
+        users: i18n.t("lesli_security.users")
     },
     core: {
         users: {},
@@ -171,7 +171,7 @@ function showUser(user) {
             :columns="columns"
             :records="storeUsers.index.records"
             :pagination="storeUsers.index.pagination"
-            :link="(user) => url.guard('users/:id', user.id)"
+            :link="(user) => url.security('users/:id', user.id)"
             @paginate="storeUsers.paginateIndex"
             @sort="storeUsers.sortIndex">
 

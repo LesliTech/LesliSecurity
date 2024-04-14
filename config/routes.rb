@@ -30,7 +30,7 @@ Building a better future, one line of code at a time.
 // · 
 =end
 
-LesliGuard::Engine.routes.draw do
+LesliSecurity::Engine.routes.draw do
 
     # Dashboard alias
     root to: "dashboards#show"

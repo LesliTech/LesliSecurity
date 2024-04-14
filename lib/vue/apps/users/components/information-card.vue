@@ -32,7 +32,7 @@ Building a better future, one line of code at a time.
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/vue/stores/user"
+import { useUser } from "LesliSecurity/vue/stores/user"
 
 
 // · implement stores
@@ -42,7 +42,7 @@ const storeUser = useUser()
 // · translations
 const translations = {
     guard: {
-        users: i18n.t("lesli_guard.users")
+        users: i18n.t("lesli_security.users")
     }
 }
 

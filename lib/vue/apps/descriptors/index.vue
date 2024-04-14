@@ -37,7 +37,7 @@ import { useRouter } from 'vue-router'
 
 
 // · import lesli stores
-import { useDescriptors } from "LesliGuard/vue/stores/descriptors"
+import { useDescriptors } from "LesliSecurity/vue/stores/descriptors"
 
 
 // · initialize/inject plugins
@@ -88,7 +88,7 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header title="Role Descriptors">
-            <lesli-link solid icon="add" :to="url.guard('descriptors/new')">
+            <lesli-link solid icon="add" :to="url.security('descriptors/new')">
                 Add descriptor
             </lesli-link>
             <lesli-button icon="refresh"
@@ -101,7 +101,7 @@ onMounted(() => {
         <lesli-toolbar @search="storeDescriptors.search"></lesli-toolbar>
 
         <lesli-table
-            :link="(descriptor) => url.guard('descriptors/:id', descriptor.id)"
+            :link="(descriptor) => url.security('descriptors/:id', descriptor.id)"
             :columns="columns"
             :loading="storeDescriptors.index.loading"
             :records="storeDescriptors.index.records"

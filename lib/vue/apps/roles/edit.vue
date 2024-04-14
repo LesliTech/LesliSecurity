@@ -46,7 +46,7 @@ import componentPrivilegeStandard from "./components/privilegeStandard.vue"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/vue/stores/role"
+import { useRole } from "LesliSecurity/vue/stores/role"
 
 
 // · initialize/inject plugins
@@ -89,10 +89,10 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header :title="'Edit role: ' + storeRole.role.name">
-            <lesli-link icon="list" :to="url.guard('roles')">
+            <lesli-link icon="list" :to="url.security('roles')">
                 {{  translations.lesli.shared.button_list }}
             </lesli-link>
-            <lesli-link main icon="visibility" :to="url.guard('roles/:id', storeRole.role.id)">
+            <lesli-link main icon="visibility" :to="url.security('roles/:id', storeRole.role.id)">
                {{  translations.lesli.shared.button_show }}
             </lesli-link>
         </lesli-header>

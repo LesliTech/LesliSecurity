@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lesli_guard (0.1.0)
+    lesli_security (0.1.0)
       rails (~> 7)
 
 GEM
@@ -153,7 +153,7 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  lesli_guard!
+  lesli_security!
   puma
 
 BUNDLED WITH

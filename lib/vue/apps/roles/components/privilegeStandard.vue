@@ -40,8 +40,8 @@ import { useRouter } from "vue-router"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/vue/stores/role"
-import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
+import { useRole } from "LesliSecurity/vue/stores/role"
+import { useDescriptor } from "LesliSecurity/vue/stores/descriptor"
 
 
 // · initialize/inject plugins
@@ -163,7 +163,7 @@ onMounted(() => {
         </template>
 
         <template #name="{ record }">
-            <router-link :to="url.guard('descriptors/:id', record.id).toString()">
+            <router-link :to="url.security('descriptors/:id', record.id).toString()">
                 {{ record.name }}
             </router-link>
         </template>

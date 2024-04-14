@@ -39,7 +39,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useRoles } from "LesliGuard/vue/stores/roles"
+import { useRoles } from "LesliSecurity/vue/stores/roles"
 
 
 // · initialize/inject plugins
@@ -104,7 +104,7 @@ onMounted(() => {
 <template>
     <lesli-application-container>
         <lesli-header title="Roles &amp; privileges">
-            <lesli-link solid button icon="add" :to="url.guard('roles/new')">
+            <lesli-link solid button icon="add" :to="url.security('roles/new')">
                 Add role
             </lesli-link>
             <lesli-button icon="refresh"

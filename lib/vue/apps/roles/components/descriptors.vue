@@ -38,7 +38,7 @@ import { ref, reactive, onMounted, watch, computed } from "vue"
 
 
 // · import lesli stores
-import { useRole } from "LesliGuard/vue/stores/role"
+import { useRole } from "LesliSecurity/vue/stores/role"
 
 
 // · implement stores

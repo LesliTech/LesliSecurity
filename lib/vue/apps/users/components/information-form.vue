@@ -36,7 +36,7 @@ import { onMounted, inject } from "vue"
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/vue/stores/user"
+import { useUser } from "LesliSecurity/vue/stores/user"
 
 
 // · import vue router composable
@@ -56,7 +56,7 @@ const url = inject("url")
 // · 
 const translations = {
     guard: {
-        users: i18n.t("lesli_guard.users")
+        users: i18n.t("lesli_security.users")
     },
     lesli: {
         shared: i18n.t("lesli.shared")

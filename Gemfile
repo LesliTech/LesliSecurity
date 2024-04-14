@@ -34,7 +34,7 @@ Building a better future, one line of code at a time.
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Specify your gem's dependencies in lesli_guard.gemspec.
+# Specify your gem's dependencies in lesli_security.gemspec.
 gemspec
 
 gem "puma"

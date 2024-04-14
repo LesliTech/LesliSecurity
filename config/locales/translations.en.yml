@@ -1,20 +1,18 @@
 ---
 :en:
-  lesli_guard:
+  lesli_security:
     users:
-      table_header_roles: Roles
-      tab_security: Security
-      table_header_last_sign_in: Last sign in
-      tab_roles_and_privileges: Roles and privileges
       table_header_name: Name
       table_header_status: Status
+      tab_roles_and_privileges: Roles and privileges
+      tab_security: Security
       column_first_name: First name
       view_title: Users
+      tab_information: Information
       column_last_name: Last name
       column_telephone: Telephone
       column_title: Title
       column_address: Address
-      tab_information: Information
       column_active: Active
       column_email: Email
       column_alias: Alias
@@ -23,6 +21,8 @@
       column_salutation: Salutation
       tab_settings: Settings
       tab_sessions: Sessions
+      table_header_roles: Roles
+      table_header_last_sign_in: Last sign in
   lesli:
     shared:
       view_discussions: Discussions
@@ -38,6 +38,7 @@
       view_status_inactive: Inactive
       button_settings: Settings
       button_show: Show
+      toolbar_search: Search...
     application:
       navigation_logout: Logout
       navigation_my_profile: My profile

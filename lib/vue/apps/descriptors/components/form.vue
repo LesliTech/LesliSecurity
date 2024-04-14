@@ -42,7 +42,7 @@ import { useRouter, useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
+import { useDescriptor } from "LesliSecurity/vue/stores/descriptor"
 
 
 // · implement stores

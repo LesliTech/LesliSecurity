@@ -40,7 +40,7 @@ import { useRoute } from "vue-router"
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/vue/stores/user"
+import { useUser } from "LesliSecurity/vue/stores/user"
 
 
 // · implement stores

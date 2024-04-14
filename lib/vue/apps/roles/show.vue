@@ -97,10 +97,10 @@ function toggleEditor() {
 <template>
     <lesli-application-container>
         <lesli-header :title="storeRole.role.name + ' role'">
-            <lesli-button icon="list" :to="url.guard('roles')">
+            <lesli-button icon="list" :to="url.security('roles')">
                 All roles
             </lesli-button>
-            <lesli-link main warning icon="edit" :to="url.guard('roles/:id/edit', route.params.id)">
+            <lesli-link main warning icon="edit" :to="url.security('roles/:id/edit', route.params.id)">
                 Edit role
             </lesli-link>
         </lesli-header>

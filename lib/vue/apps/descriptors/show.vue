@@ -38,7 +38,7 @@ import { inject, onMounted, ref } from "vue"
 
 
 // · import lesli stores
-import { useDescriptor } from "LesliGuard/vue/stores/descriptor"
+import { useDescriptor } from "LesliSecurity/vue/stores/descriptor"
 import { useSystemController } from "Lesli/vue/shared/stores/systemController"
 
 

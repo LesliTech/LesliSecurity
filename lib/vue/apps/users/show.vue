@@ -37,7 +37,7 @@ import { useRouter, useRoute } from 'vue-router'
 
 
 // · import lesli stores
-import { useUser } from "LesliGuard/vue/stores/user"
+import { useUser } from "LesliSecurity/vue/stores/user"
 
 
 // · implement stores
@@ -47,18 +47,18 @@ const route = useRoute()
 
 
 // · import profile components
-import informationCard from "LesliGuard/vue/apps/users/components/information-card.vue"
-import informationForm from "LesliGuard/vue/apps/users/components/information-form.vue"
-import managementRoles from "LesliGuard/vue/apps/users/components/management-roles.vue"
-import managementSession from "LesliGuard/vue/apps/users/components/management-sessions.vue"
-import managementSettings from "LesliGuard/vue/apps/users/components/management-settings.vue"
-import managementSecurity from "LesliGuard/vue/apps/users/components/management-security.vue"
+import informationCard from "LesliSecurity/vue/apps/users/components/information-card.vue"
+import informationForm from "LesliSecurity/vue/apps/users/components/information-form.vue"
+import managementRoles from "LesliSecurity/vue/apps/users/components/management-roles.vue"
+import managementSession from "LesliSecurity/vue/apps/users/components/management-sessions.vue"
+import managementSettings from "LesliSecurity/vue/apps/users/components/management-settings.vue"
+import managementSecurity from "LesliSecurity/vue/apps/users/components/management-security.vue"
 
 
 // · translations
 const translations = {
     guard: {
-        users: i18n.t("lesli_guard.users")
+        users: i18n.t("lesli_security.users")
     },
     core: {
         roles: I18n.t("core.roles"),
