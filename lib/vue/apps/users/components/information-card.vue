@@ -51,11 +51,8 @@ const translations = {
     <div class="user-information-card mb-5">
         <div class="media is-align-items-center">
             <div class="media-left">
-                <figure class="image is-128x128">
-                    <span class="alternative-avatar">
-                         {{ storeUser.initials }}
-                    </span>
-                </figure>
+                <lesli-avatar :name="''+storeUser.user.full_name">
+                </lesli-avatar>
             </div>
 
             <div class="media-content">

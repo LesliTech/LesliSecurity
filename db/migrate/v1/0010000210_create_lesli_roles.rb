@@ -32,6 +32,7 @@ Building a better future, one line of code at a time.
 
 class CreateLesliRoles < ActiveRecord::Migration[7.0]
     def change
+
         create_table :lesli_roles do |t|
             t.string    :name
             t.string    :code

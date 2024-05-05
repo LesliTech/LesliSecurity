@@ -2,6 +2,11 @@
 :es:
   lesli_security:
     users:
+      column_salutation: Saludo
+      tab_settings: Configuración
+      tab_sessions: Sesiones
+      table_header_roles: Roles
+      table_header_last_sign_in: Ultimo login
       table_header_name: Nombre
       table_header_status: Estado
       tab_roles_and_privileges: Roles y privilegios
@@ -18,11 +23,6 @@
       column_alias: Alias
       table_header_email: Email
       table_header_last_activity: Ultima actividad
-      column_salutation: Saludo
-      tab_settings: Configuración
-      tab_sessions: Sesiones
-      table_header_roles: Roles
-      table_header_last_sign_in: Ultimo login
   lesli:
     shared:
       view_discussions: Discusiones

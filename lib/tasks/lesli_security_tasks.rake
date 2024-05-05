@@ -39,12 +39,12 @@ namespace :lesli_security do
     # Drop, build, migrate & seed database (development only)
     def role_sync_privileges
 
-        L2.msg("Syncing privileges for all the available roles")
-
         Lesli::Descriptor.where(:name => ["owner", "sysadmin"]).each do |descriptor|
            descriptor.initialize_descriptor_privileges
         end
 
         Lesli::RoleDescriptorOperator.new(Lesli::Role.all.pluck(:id)).synchronize
+
+        L2.msg("LesliSecurity: Syncing privileges for all the available roles")
     end
 end

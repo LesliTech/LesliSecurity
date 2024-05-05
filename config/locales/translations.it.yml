@@ -2,6 +2,11 @@
 :it:
   lesli_security:
     users:
+      column_salutation: ":lesli_security.users.column_salutation:"
+      tab_settings: ":lesli_security.users.tab_settings:"
+      tab_sessions: ":lesli_security.users.tab_sessions:"
+      table_header_roles: ":lesli_security.users.table_header_roles:"
+      table_header_last_sign_in: ":lesli_security.users.table_header_last_sign_in:"
       table_header_name: ":lesli_security.users.table_header_name:"
       table_header_status: ":lesli_security.users.table_header_status:"
       tab_roles_and_privileges: ":lesli_security.users.tab_roles_and_privileges:"
@@ -18,11 +23,6 @@
       column_alias: ":lesli_security.users.column_alias:"
       table_header_email: ":lesli_security.users.table_header_email:"
       table_header_last_activity: ":lesli_security.users.table_header_last_activity:"
-      column_salutation: ":lesli_security.users.column_salutation:"
-      tab_settings: ":lesli_security.users.tab_settings:"
-      tab_sessions: ":lesli_security.users.tab_sessions:"
-      table_header_roles: ":lesli_security.users.table_header_roles:"
-      table_header_last_sign_in: ":lesli_security.users.table_header_last_sign_in:"
   lesli:
     shared:
       view_discussions: ":lesli.shared.view_discussions:"
