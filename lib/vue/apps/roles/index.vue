@@ -89,7 +89,7 @@ const props = defineProps({
     appMountPath: {
         type: String,
         required: false,
-        default: "guard/roles",
+        default: "security/roles",
     }
 })
 
