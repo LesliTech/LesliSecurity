@@ -73,7 +73,7 @@ const columns = [{
     label: "ID",
     sort: true
 }, {
-    field: "name",
+    field: "fullname",
     label: translations.guard.users.table_header_name,
     sort: true
 }, {

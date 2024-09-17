@@ -69,15 +69,15 @@ module LesliSecurity
             #.joins(sql_string_for_user_sessions)
             users = users.page(query[:pagination][:page])
             .per(query[:pagination][:perPage])
-            .order("#{query[:order][:by]} #{query[:order][:dir]} NULLS LAST")
+            #.order("#{query[:order][:by]} #{query[:order][:dir]} NULLS LAST")
 
             users.select(
                 :id,
-                "CONCAT(COALESCE(first_name, ''), ' ', COALESCE(last_name, '')) as name",
+                "CONCAT(COALESCE(lesli_users.first_name, ''), ' ', COALESCE(lesli_users.last_name, '')) as fullname",
                 :email,
                 :active,
                 :rolenames,
-                Date2.new.date_time.db_column("current_sign_in_at")
+                #Date2.new.date_time.db_column("current_sign_in_at")
             )
 
         end

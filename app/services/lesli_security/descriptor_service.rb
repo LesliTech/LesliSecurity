@@ -68,7 +68,7 @@ module LesliSecurity
                 :id,
                 :name,
                 "coalesce(actions.total, 0) as privileges_count",
-                Date2.new.date_time.db_timestamps("lesli_descriptors")
+                #Date2.new.date_time.db_timestamps("lesli_descriptors")
             )
             
             # skip native descriptors
@@ -82,7 +82,7 @@ module LesliSecurity
             return descriptors
             .page(query[:pagination][:page])
             .per(query[:pagination][:perPage])
-            .order("#{query[:order][:by]} #{query[:order][:dir]} NULLS LAST")
+            #.order("#{query[:order][:by]} #{query[:order][:dir]} NULLS LAST")
         end 
     
         # @overwrite
