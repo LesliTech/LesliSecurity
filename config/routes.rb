@@ -48,7 +48,7 @@ LesliSecurity::Engine.routes.draw do
     end
 
     # User management
-    resources :users, only: [:index, :show, :new, :update] do 
+    resources :users, only: [:index, :show, :new, :update, :create] do 
 
         # extensions to the user methods
         scope module: :user do

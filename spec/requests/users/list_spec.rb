@@ -33,9 +33,9 @@ Building a better future, one line of code at a time.
 
 # ·
 require "rails_helper"
-require Lesli::Engine.root.join("spec/support/testers/request")
+require Lesli::RSpec.testers_request
 
-ENGINE_MOUNTED_PATH ||= LesliAdmin::Engine.routes.find_script_name({})
+ENGINE_MOUNTED_PATH ||= Lesli::System.engine("LesliSecurity", "path")
 
 
 # ·

@@ -48,54 +48,52 @@ const translations = {
 
 </script>
 <template>
-    <div class="user-information-card mb-5">
-        <div class="media is-align-items-center">
-            <div class="media-left">
+    <div class="user-information-card level">
+        <div class="level-left">
+            <div class="level-item">
                 <lesli-avatar :name="''+storeUser.user.full_name">
                 </lesli-avatar>
             </div>
-
-            <div class="media-content">
-                <div class="content mb-0">
-                    <h5 class="title is-5 mb-0">
+            <div class="level-item">
+                <div>
+                    <h5 class="title is-size-5 mb-0">
                         {{ storeUser.user.first_name }}
                         {{ storeUser.user.last_name }}
                     </h5>
                     <p>{{ storeUser.user.detail_attributes.title }}</p>
-                </div>
+                    <div class="level is-mobile">
+                        <div class="level-left">
+                            <a  class="level-item mr-4"
+                                v-if="storeUser.user.email"  
+                                :href="'mailto:'+storeUser.user.email">
+                                <span class="icon is-small mr-2">
+                                    <span class="material-icons">
+                                        email
+                                    </span>
+                                </span>
+                                {{ storeUser.user.email }}
+                            </a>
+                            <a  class="level-item mr-4"
+                                v-if="storeUser.user.telephone"
+                                :href="'tel:'+storeUser.user.telephone">
+                                <span class="icon is-small mr-2">
+                                    <span class="material-icons">
+                                        phone
+                                    </span>
+                                </span>
+                                {{ storeUser.user.telephone }}
+                            </a>
 
-                <div class="level is-mobile">
-                    <div class="level-left">
-                        <a  class="level-item mr-4"
-                            v-if="storeUser.user.email"  
-                            :href="'mailto:'+storeUser.user.email">
-                            <span class="icon is-small mr-2">
-                                <span class="material-icons">
-                                    email
+                            <!-- Show the max role -->
+                            <p class="level-item" v-if="storeUser.role_names">
+                                <span class="icon is-small mr-2">
+                                    <span class="material-icons">
+                                        security
+                                    </span>
                                 </span>
-                            </span>
-                            {{ storeUser.user.email }}
-                        </a>
-                        <a  class="level-item mr-4"
-                            v-if="storeUser.user.telephone"
-                            :href="'tel:'+storeUser.user.telephone">
-                            <span class="icon is-small mr-2">
-                                <span class="material-icons">
-                                    phone
-                                </span>
-                            </span>
-                            {{ storeUser.user.telephone }}
-                        </a>
-
-                        <!-- Show the max role -->
-                        <p class="level-item" v-if="storeUser.role_names">
-                            <span class="icon is-small mr-2">
-                                <span class="material-icons">
-                                    security
-                                </span>
-                            </span>
-                            {{ storeUser.role_names }}
-                        </p>
+                                {{ storeUser.role_names }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

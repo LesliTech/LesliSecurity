@@ -66,7 +66,7 @@ module LesliSecurity
 
             users = current_user.account.users
             .joins(sql_string_for_user_roles)
-            #.joins(sql_string_for_user_sessions)
+            .joins(sql_string_for_user_sessions)
             users = users.page(query[:pagination][:page])
             .per(query[:pagination][:perPage])
             #.order("#{query[:order][:by]} #{query[:order][:dir]} NULLS LAST")
@@ -77,7 +77,7 @@ module LesliSecurity
                 :email,
                 :active,
                 :rolenames,
-                #Date2.new.date_time.db_column("current_sign_in_at")
+                Date2.new.date_time.db_column("current_sign_in_at")
             )
 
         end
@@ -261,7 +261,7 @@ module LesliSecurity
         def sessions(current_session_id)
             current_user.sessions
             .joins(:user)
-            .where("expiration_at > ? or expiration_at is ?", Time.now.utc, nil)
+            .where("expiration_at is NULL or expiration_at is ?", Time.now.utc)
             .select(
                 :id,
                 :session_source,

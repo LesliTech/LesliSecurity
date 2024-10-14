@@ -40,6 +40,7 @@ module LesliSecurity
                 format.html {}
                 format.json do
                     return respond_with_pagination(UserService.new(current_user, query).sessions(session[:user_session_id]))
+                    #return respond_with_successful(UserService.new(current_user, query).sessions(session[:user_session_id]))
                 end
             end
         end

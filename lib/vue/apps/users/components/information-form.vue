@@ -69,99 +69,15 @@ const translations = {
 <template>
     <lesli-form flat @submit="storeUser.putUser()">
 
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label"> 
-                    {{ translations.guard.users.column_email }}
-                    <span class="is-danger">*</span>
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="user_email" v-model="storeUser.user.email" required="required" type="email" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <lesli-input horizontal required v-model="storeUser.user.email" :label="translations.guard.users.column_email"></lesli-input>
+        <lesli-input horizontal required v-model="storeUser.user.first_name" :label="translations.guard.users.column_first_name"></lesli-input>
+        <lesli-input horizontal required v-model="storeUser.user.last_name" :label="translations.guard.users.column_last_name"></lesli-input>
+        <lesli-input horizontal required v-model="storeUser.user.alias" :label="translations.guard.users.column_alias"></lesli-input>
+        <lesli-input horizontal required v-model="storeUser.user.telephone" :label="translations.guard.users.column_telephone"></lesli-input>
+        <lesli-input horizontal required v-model="storeUser.user.detail_attributes.title" :label="translations.guard.users.column_title"></lesli-input>
 
         <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label"> 
-                    {{ translations.guard.users.column_first_name }}
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="first_name" v-model="storeUser.user.first_name" type="text" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">
-                    {{ translations.guard.users.column_last_name }}
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="last_name" v-model="storeUser.user.last_name" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">
-                    {{ translations.guard.users.column_alias }}
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="user_alias" v-model="storeUser.user.alias" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">
-                    {{ translations.guard.users.column_telephone }}
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="user_number" v-model="storeUser.user.telephone" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">
-                    {{ translations.guard.users.column_title }}
-                </label>
-            </div>
-            <div class="field-body">
-                <div class="field">
-                    <div class="control">
-                        <input name="user_title" v-model="storeUser.user.detail_attributes.title" class="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="field is-horizontal">
-            <div class="field-label is-normal">
-            </div>
+            <div class="field-label is-normal"></div>
             <div class="field-body">
                 <div class="field">
                     <div class="control">

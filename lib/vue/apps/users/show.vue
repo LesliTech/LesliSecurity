@@ -85,7 +85,7 @@ onMounted(() => {
 </script>
 <template>
     <lesli-application-container>
-        <information-card></information-card>
+        <information-card class="mt-4 mb-6"></information-card>
         <lesli-tabs v-model="tab">
             <lesli-tab-item icon="info_outline" :title="translations.guard.users.tab_information">
                 <information-form></information-form>
